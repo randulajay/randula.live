@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>DataCraft for Business: Applied Analysis Toolkit</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+  
+    <!-- Favicons -->
+    <link href="../img/favicon.png" rel="icon">
+    <link href="../img/apple-touch-icon.png" rel="apple-touch-icon">
+  
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900&family=Quicksand:wght@300;400;500;600;700&family=Domine:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+    <!-- Vendor CSS Files -->
+    <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="../vendor/aos/aos.css" rel="stylesheet">
+    <link href="../vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <link href="../vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  
+    <!-- Main CSS File -->
+    <link href="../css/main.css" rel="stylesheet">
+  </head>
+
+<body class="portfolio-details-page">
+
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid position-relative d-flex align-items-center justify-content-between">
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+    </div>
+  </header>
+
+  <main class="main">
+
+    <!-- Page Title -->
+    <div class="page-title dark-background">
+      <div class="container position-relative">
+        <h1>Decoding Spam: A Machine Learning Journey to Detect and Defeat Fraudulent Emails</h1>
+        <nav class="breadcrumbs">
+          <ol>
+            <li><a href="../index.html">Home</a></li>
+            <li class="current">Portfolio Details</li>
+          </ol>
+        </nav>
+      </div>
+    </div><!-- End Page Title -->
+
+    <section id="portfolio-details" class="portfolio-details section">
+
+        <div class="container" data-aos="fade-up" data-aos-delay="100">
+  
+          <div class="row gy-4 justify-content-center">
+  
+            <!-- Centered Slider -->
+            <div class="col-lg-8">
+              <div class="portfolio-details-slider swiper init-swiper">
+                <script type="application/json" class="swiper-config">
+                  {
+                    "loop": true,
+                    "speed": 600,
+                    "autoplay": {
+                      "delay": 5000
+                    },
+                    "slidesPerView": "auto",
+                    "pagination": {
+                      "el": ".swiper-pagination",
+                      "type": "bullets",
+                      "clickable": true
+                    }
+                  }
+                </script>
+                <div class="swiper-wrapper align-items-center">
+                    <div class="swiper-slide">
+                        <img src="../../assets/img/portfolio/ukscams/14.jpg" alt="">
+                      </div>
+                      <div class="swiper-slide">
+                        <img src="../../assets/img/portfolio/ukscams/15.jpg" alt="">
+                      </div>
+                    <div class="swiper-slide">
+                        <img src="../../assets/img/portfolio/ukscams/16.jpg" alt="">
+                      </div>
+      
+                      <div class="swiper-slide">
+                        <img src="../../assets/img/portfolio/ukscams/17.jpg" alt="">
+                      </div>
+      
+                      <div class="swiper-slide">
+                        <img src="../../assets/img/portfolio/ukscams/18.jpg" alt="">
+                      </div>
+      
+                      <div class="swiper-slide">
+                        <img src="../../assets/img/portfolio/ukscams/19.jpg" alt="">
+                      </div>
+                </div>
+                <div class="swiper-pagination"></div>
+              </div>
+            </div>
+  
+          </div>
+  
+          <!-- Project Information -->
+          <div class="row gy-4">
+            <div class="col-lg-12">
+              <div class="portfolio-description" data-aos="fade-up" data-aos-delay="300">
+                <h1>Decoding Spam: A Machine Learning Journey to Detect and Defeat Fraudulent Emails</h1>
+                <h2><b>Summary</b></h2>
+                <h2>In this analysis, a comprehensive comparison of six machine learning models was conducted to identify the most effective spam detection algorithm. The models included Logistic Regression, Naive Bayes, K-Nearest Neighbors (KNN), Decision Tree, Random Forests, and Support Vector Machines (SVM). The analysis used key metrics such as accuracy, precision, recall, and the F1 score to evaluate the models. The Receiver Operating Characteristic (ROC) curve was plotted for each model to visually represent their performance in distinguishing spam from legitimate emails. The Support Vector Machines (SVM) model emerged as the best-performing model, with a high AUC (Area Under the Curve) of 0.99, indicating excellent classification performance. Given its superior accuracy and discriminative ability, SVM was selected as the core model for building a web-based spam detection application.</h2>
+                <h2><b>Key Process Steps</b></h2>
+                <ol>
+                    <li>Data Acquisition: Collecting and labelling email datasets with spam and non-spam labels.</li>
+                    <li>Data Preprocessing: Cleaning the data to ensure efficient processing by the machine learning algorithm.</li>
+                    <li>Model Comparison: Evaluating six models based on performance metrics.</li>
+                    <li>Model Selection: Selecting SVM as the best model based on accuracy and AUC score.</li>
+                    <li>Web Application Development: Using Flask to build a web interface that allows users to input email text and classify it as spam or legitimate.</li>
+                    <li>Evaluation and Visualization: Displaying performance using ROC curves and metrics such as accuracy, precision, recall, and F1 score.</li>
+                </ol>
+                <p>&nbsp;</p>
+                <h3><a name="_Toc161992853"></a><a name="_Toc162006091"></a>Comparative Analysis of Detection Models</h3>
+                <p>This research investigates the performance of six machine learning models: logistic regression, naive bayes, K-nearest neighbours, decision tree classifiers, random forests, and SVMs (support vector machines). The performance of each model is meticulously assessed using various metrics: accuracy, precision, recall, and the F1 metric. Such metrics give information on how effective each classifier is at discriminating spam from ham emails.&nbsp;The accuracy is the ratio of truly predicted observations to the total observations.&nbsp;Accuracy is the proportion of correctly predicted positive observations to the overall predicted positive ones.&nbsp;Classification, also known as sensitivity, is the measure of correctly predicted positive observations over all observations in the actual class. The F1 score is the weighted mean of precision recall, which gives a single measure of the accuracy of the test(Sokolova and Lapalme, 2009).</p>
+                <p>&nbsp;</p>
+                <p><strong>1.Logistic Regression</strong></p>
+                <div class="scams">
+                    <img src="../../assets/img/portfolio/ukscams/2.jpg" alt="" class="img-fluid">
+                    <img src="../../assets/img/portfolio/ukscams/3.jpg" alt="" class="img-fluid">
+                </div>
+                <p>&nbsp;</p>
+                <p>The ROC curve shows Logistic Regression a high area under the curve (AUC), revealing a good performance in terms of distinguishing spam from ham emails. The curve follows the upper left corner quite well, which means the true positive rate and false positive rate are in a balance. Logistic Regression is an excellent method, providing a high accuracy along with balanced metrics, and therefore, it can be safely used for binary classification tasks.</p>
+                <ol start="2">
+                <li><strong> Naive Bayes</strong></li>
+                </ol>
+                <div class="scams">
+                    <img src="../../assets/img/portfolio/ukscams/4.jpg" alt="" class="img-fluid">
+                    <img src="../../assets/img/portfolio/ukscams/5.jpg" alt="" class="img-fluid">
+                </div>
+                <p>&nbsp;</p>
+                <p>ROC Plot: The ROC curve of the Naive Bayes model actually gives a higher AUC than the Logistic Regression model, and so it is marginally better at differentiating spam and ham. The capability of applying text classification through this approach is largely attributable to that assumption of feature independence. Naive Bayes achieves the best results and outperforms Logistic Regression slightly in all metrics, which is evidence of its ability to classify texts correctly, especially due to it assuming the independency of features.</p>
+                <p>&nbsp;</p>
+                <ol start="3">
+                <li><strong> K-Nearest Neighbors (KNN)</strong></li>
+                </ol>
+                <div class="scams">
+                    <img src="../../assets/img/portfolio/ukscams/6.jpg" alt="" class="img-fluid">
+                    <img src="../../assets/img/portfolio/ukscams/7.jpg" alt="" class="img-fluid">
+                </div>
+                <p>&nbsp;</p>
+                <p>ROC Plot: The AUC of ROC curve for KNN is less than the others models, it can be inferred that KNN is not the best suited model for this task. There could be a possibility of this because KNN uses the proximity of the similar data points to reach the decision, which is not less difficult for the text data due to the high dimensional space. K-Nearest Neighbors has lower scores in comparison to other models. This might be the case, since it often uses the closeness of similar data points that is not a very efficient way when it comes to high dimensional text data.</p>
+      
+                <ol start="4">
+                <li><strong> Decision Tree</strong></li>
+                </ol>
+                <div class="scams">
+                    <img src="../../assets/img/portfolio/ukscams/8.jpg" alt="" class="img-fluid">
+                    <img src="../../assets/img/portfolio/ukscams/9.jpg" alt="" class="img-fluid">
+                </div>
+                <p>&nbsp;</p>
+                <p>ROC Plot: It has a good ROC curve, with the AUC being not as good as some other models. This might indicate a satisfactory but not outstanding result: maybe a decision boundary could be too simple or the network overfits. The decision tree model is a robust model that is both accurate and generalizes well. Hence, this model somewhat slackens its performance in comparison with others, maybe because of overfitting or the simplicity of the decision boundaries.</p>
+        
+                <ol start="5">
+                <li><strong> Random Forests</strong></li>
+                </ol>
+                <div class="scams">
+                    <img src="../../assets/img/portfolio/ukscams/10.jpg" alt="" class="img-fluid">
+                    <img src="../../assets/img/portfolio/ukscams/11.jpg" alt="" class="img-fluid">
+                </div>
+                <p>&nbsp;</p>
+                <p>ROC Plot: The Random Forest model is characterized by the highest AUC score among the models under consideration, which implies high accuracy in classification. The superiority of this model is based on the ensemble approach, which consequently will provide more robustness and reduce the probability of an overfitting occurrence. The Random Forests surpass the Decision Tree model by means of an ensemble of trees, which substantially boost precision and immunity to overfitting.</p>
+              
+                <ol start="6">
+                <li><strong> Support Vector Machines (SVM)</strong></li>
+                </ol>
+                <div class="scams">
+                    <img src="../../assets/img/portfolio/ukscams/12.jpg" alt="" class="img-fluid">
+                    <img src="../../assets/img/portfolio/ukscams/13.jpg" alt="" class="img-fluid">
+                </div>
+                <p>&nbsp;</p>
+                <p>ROC Plot: The SVM model is the strongest in terms of the ROC curve, as the curve shows the highest AUC, indicating the best distinction among spam and ham emails. This unique capability can be attributed to its mechanism of coming up with the best hyperplane that maximally dissects the two classes. SVM reached the best results on all measures, proving it is able to generate the best hyperplanes for such problems through linear kernels.</p>
+                <h2><a name="_Toc161992858"></a><a name="_Toc162006095"></a>Evaluating the SPAM Email Detection System</h2>
+                <p>In the context of a spam email detection application, the process involves several methodical steps using machine learning algorithms, specifically Support Vector Machines (SVM) with a linear kernel. This was built with the different models to evaluate the accuracy, and the Support Victor machine was the best model when compare the accuracy because of that SVM was the selected model to build this application.</p>
+                <p>These steps are as follows:</p>
+                <ol>
+                <li><strong>Data Acquisition</strong>: Gathering and labelling a dataset that includes both spam and non-spam emails, crucial for training and evaluating the machine learning model.</li>
+                <li><strong>Data Preprocessing:</strong> Cleaning and transforming the text data to enable the learning algorithm to process the information effectively. This includes normalization, tokenization, and feature extraction.</li>
+                <li><strong>Model Selection:</strong> Choosing an appropriate machine learning model to classify emails. Support Vector Machines (SVM) are chosen for their effectiveness in high-dimensional spaces and their ability to model non-linear decision boundaries using different kernels.</li>
+                <li><strong>Model Training:</strong> Utilizing the &ldquo;sklearn&rdquo; library's SVC class with a linear kernel to train the SVM model on the pre-processed training data. Training involves adjusting the model parameters to minimize prediction errors.</li>
+                <li><strong>Prediction:</strong> Finally, the trained SVM model is applied to make the decisions on the class (spam or non-spam) of new email entries. Predictive accuracy has been recognized as the main performance evaluation indicator.</li>
+                <li><strong>Evaluation</strong>: The assessment metrics of accuracy, precision, recall, and the Receiver Operating Characteristic (ROC) curve can be used in such a way. The ROC curve is a plot that represents the true positive rate versus the false positive rate at various cut-off values, and area under curve (AUC) serves as an index of the model's ability to distinguish between the classes.</li>
+                <li><strong>Performance Visualization</strong>: Tracing the ROC curve using matplotlib, highlighting the model's performance in spam detection. A model which has an AUC close to 1.0 is a good performer.</li>
+                </ol>
+                <div class="scams">
+                    <img src="../../assets/img/portfolio/ukscams/12.jpg" alt="" class="img-fluid">
+                    <img src="../../assets/img/portfolio/ukscams/13.jpg" alt="" class="img-fluid">
+                </div>
+                <p>The spam detection application will provide users with a box where they will be required to enter the contents of an email, which will then be processed through an SVM classification model. The web application is the interface used to display the classification results, which are either classified as spam or legitimate. The application operates on a local server, as denoted by the IP address 127.0.0.1:5000, which indicates that the application was developed on the local server for development purposes. In this regard, it uses a web framework, presumably Flask, for its backend operations, which is the popular option for such tasks because of its lightweight and flexible nature.</p>
+                <p>When executing the spam detection application, the following output is generated in the console, indicating that the Flask app named 'app' is in active development mode and running on the local server. Debug mode in Flask enables the coders to see the changes to the code in real-time while the server is running and offers an in-browser debugger for problem-solving.</p>
+                <p>&nbsp;</p>
+                <div class="scams">
+                    <img src="../../assets/img/portfolio/ukscams/16.jpg" alt="" class="img-fluid">
+                    <p>&nbsp;</p>
+                    <img src="../../assets/img/portfolio/ukscams/17.jpg" alt="" class="img-fluid">
+                    <p>&nbsp;</p>
+                    <img src="../../assets/img/portfolio/ukscams/18.jpg" alt="" class="img-fluid">
+                    <p>&nbsp;</p>
+                    <img src="../../assets/img/portfolio/ukscams/19.jpg" alt="" class="img-fluid">
+                    <p>&nbsp;</p>
+                    <img src="../../assets/img/portfolio/ukscams/20.jpg" alt="" class="img-fluid">
+                </div>      
+                <p>SCAM Email detector Web base App &ldquo;app.py&rdquo; file:</p>
+                <p><strong>IDE - Visual Studio Code</strong></p>
+                <div class="scams">
+                    <img src="../../assets/img/portfolio/ukscams/46.jpg" alt="" class="img-fluid">
+                </div>
+                <p>&nbsp;</p>
+                <p>train_model.py file</p>
+                <div class="scams">
+                    <img src="../../assets/img/portfolio/ukscams/47.jpg" alt="" class="img-fluid">
+                </div>
+                <p>&nbsp;</p>
+                <p>File Structure</p>
+                <div class="scams">
+                    <img src="../../assets/img/portfolio/ukscams/48.jpg" alt="" class="img-fluid">
+                </div>
+                <p>&nbsp;</p>
+                <p><strong>Dataset Analysis</strong></p>
+                <p><strong>SARIMAX model Training : IDE - Visual Studio Code</strong></p>
+                <div class="scams">
+                    <img src="../../assets/img/portfolio/ukscams/49.jpg" alt="" class="img-fluid">
+                </div>
+                <p>&nbsp;</p>
+                <p><strong>&nbsp;</strong></p>
+                <p><strong>ARIMA model</strong></p>
+                <div class="scams">
+                    <img src="../../assets/img/portfolio/ukscams/50.jpg" alt="" class="img-fluid">
+                </div>
+                <p>&nbsp;</p>
+                <p><strong>Sampel of Heat map visualization</strong></p>
+                <p><strong>IDE - Jupyter Notebook</strong></p>
+                <div class="scams">
+                    <img src="../../assets/img/portfolio/ukscams/51.jpg" alt="" class="img-fluid">
+                </div>
+                <h2><p>Conclusion</p></h2>
+                <p>The SVM model was chosen for its high accuracy and low false positive rate, making it suitable for spam detection. The developed web application provides users with an easy interface to check email authenticity, enhancing cybersecurity against spam emails. Future research can focus on improving model accuracy to adapt to evolving spam techniques.</p>              
+              </div>
+            </div>
+          </div>
+  
+        </div>
+  
+      </section><!-- /Portfolio Details Section -->
+  </main>
+
+<!-- Footer -->
+<footer id="footer" class="footer position-relative dark-background">
+    <div class="container">
+      <div class="social-links d-flex justify-content-center">
+        <a href="https://x.com/Randula_Jay" class="social-link twitter"><i class="bi bi-twitter"></i></a>
+        <a href="https://www.facebook.com/randulajayarathna/" class="social-link facebook"><i class="bi bi-facebook"></i></a>
+        <a href="https://www.instagram.com/randula.j/" class="social-link instagram"><i class="bi bi-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/randula-jayarathna/" class="social-link linkedin"><i class="bi bi-linkedin"></i></a>
+        <a href="https://uk.pinterest.com/Randula_Jay/" class="social-link pinterest"><i class="bi bi-pinterest"></i></a>
+        <a href="https://github.com/randulajay" class="social-link github"><i class="bi bi-github"></i></a>
+      </div> 
+      <div class="container">
+        <div class="copyright">
+          <span>Designed by</span> <strong class="px-1 sitename">Randula Jayarathna</strong> <span>All Rights Reserved</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+  <!-- Vendor JS Files -->
+  <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../vendor/php-email-form/validate.js"></script>
+  <script src="../vendor/aos/aos.js"></script>
+  <script src="../vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="../vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="../vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+  <script src="../vendor/isotope-layout/isotope.pkgd.min.js"></script>
+
+  <!-- Main JS File -->
+  <script src="../js/main.js"></script>
+
+</body>
+
+</html>
