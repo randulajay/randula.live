@@ -128,15 +128,49 @@ h6 {
 
 /* PHP Email Form Messages
 ------------------------------*/
-.php-email-form .error-message {
-  display: none;
-  background: #df1529;
-  color: #ffffff;
-  text-align: left;
+/* General styling for messages */
+.sent-message,
+.error-message {
   padding: 15px;
-  margin-bottom: 24px;
-  font-weight: 600;
+  border-radius: 8px;
+  font-size: 18px;
+  text-align: center;
+  font-weight: bold;
+  margin-top: 20px;
+  display: none; /* Initially hidden */
 }
+
+/* Success message styling */
+.sent-message {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+/* Error message styling */
+.error-message {
+  background-color: #16a085;
+  color: white;
+  border: 1px solid #16a085;
+}
+
+/* Button inside the message */
+.sent-message a,
+.error-message a {
+ 
+
+  background-color: #16a085;
+  color: #fff;
+  
+
+  font-size: 16px;
+}
+
+.sent-message a:hover,
+.error-message a:hover {
+  background-color: #e74c3c;
+}
+
 
 .php-email-form .sent-message {
   display: none;

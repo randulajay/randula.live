@@ -214,23 +214,21 @@
 
 
 // form
-const form = document.querySelector('.php-email-form');
+// Simulate success or error condition
+const isSuccess = true; // Change this to false to simulate an error
 
-form.addEventListener('submit', (e) => {
-  e.preventDefault(); // Prevent default form submission
-  const loading = document.querySelector('.loading');
-  const successMessage = document.querySelector('.sent-message');
-  const errorMessage = document.querySelector('.error-message');
+setTimeout(() => {
+  loading.style.display = 'none'; // Hide loading
 
-  loading.style.display = 'block';
+  if (isSuccess) {
+    successMessage.style.display = 'block'; // Show success message
+  } else {
+    errorMessage.style.display = 'block'; // Show error message
+  }
 
-  // Simulate a successful form submission after 2 seconds
-  setTimeout(() => {
-    loading.style.display = 'none';
-    successMessage.style.display = 'block';
-    form.reset(); // Reset the form fields
-  }, 2000);
-});
+  form.reset(); // Reset the form fields
+}, 2000);
+
 
 // dots
 document.addEventListener('DOMContentLoaded', function () {
