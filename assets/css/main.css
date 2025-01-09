@@ -1882,3 +1882,26 @@ section,
 .social-link.github:hover {
   background-color: black;
 }
+
+
+/* LINEKDIN */
+/* LinkedIn Button Style */
+.libutton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 7px;
+  text-align: center;
+  outline: none;
+  text-decoration: none !important;
+  color: #ffffff !important;
+  width: 200px;
+  height: 40px;
+  border-radius: 16px;
+  background-color: #0A66C2;
+  font-family: "SF Pro Text", Helvetica, sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0 auto; /* Centers the button horizontally */
+}
+
