@@ -884,12 +884,7 @@ section,
   text-decoration: underline;
 }
 
-/* new */
-.about-profile-img {
-  display: block;
-  margin: 0 auto;
-  border-radius: 50%;
-}
+
 
 /* ### */
 .about .content h2 {
@@ -943,8 +938,10 @@ section,
 
 /* About Profile Image Styling */
 .about-profile-img {
-  max-width: 400px; /* Adjust this value to control the width */
-  height: auto;
+  width: 100%;
+  max-width: 250px;  
+  aspect-ratio: 1 / 1;   /* always square */
+  object-fit: cover;
   border-radius: 50%;
   display: block;
   margin: 0 auto 20px auto;
@@ -1905,3 +1902,85 @@ section,
   margin: 0 auto; /* Centers the button horizontally */
 }
 
+/* new tags 20/09/2025 */
+
+
+
+/* scial */
+.social-links-unique {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 20px;
+}
+
+
+/* Individual icons smaller for mobile */
+.social-links-unique .social-link {
+  width: 40px;                /* smaller size */
+  height: 40px;
+  font-size: 18px;
+  flex: 0 0 auto;             /* don't shrink unevenly */
+}
+
+
+/* unified CTA style */
+/* unified CTA style */
+.cta-stack {
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.cta-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border-radius: 28px;
+  font-weight: 700;
+  font-size: 16px;
+  text-decoration: none;
+  color: #fff;
+  margin-top: 20px;
+  background: rgba(29,112,184,.92); /* default */
+  backdrop-filter: blur(4px);
+  box-shadow: 0 6px 18px rgba(0,0,0,.25);
+  transition: transform .2s, box-shadow .2s, background .2s, color .2s, font-weight .2s;
+}
+
+.cta--blue { background: rgba(74,144,226,.92); }
+.cta--orange { background: rgba(255,159,28,.92); }
+.cta--green { background: rgba(33,150,83,.92); }
+
+/* hover: subtle lift + bold text only */
+.cta-pill:hover {
+  transform: translateY(2px);
+  box-shadow: 0 3px 12px rgba(0,0,0,.35);
+  font-weight: 900;  /* makes text bolder */
+}
+
+.cta-pill:hover .cta-label,
+.cta-pill:hover .cta-icon {
+ transform: translateY(2px);
+  font-weight: 900;       /* bold on hover */
+  color: #fff !important; /* force white text */
+}
+
+/* mobile spacing tweak */
+@media (max-width: 420px) {
+  .cta-pill { 
+    padding: 12px 20px; 
+    font-size: 15px; 
+  }
+}
+
+.cta-icon svg {
+  width: 18px;
+  height: 18px;
+  display: block;
+  fill: currentColor;
+}

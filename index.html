@@ -4,20 +4,30 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Randula Jayarathna | Operations Engineer & Data Scientist</title>
-  <meta name="description" content="I'm Randula Jayarathna, an Operations Engineer and Data Scientist specializing in L2/L3 support and IT infrastructure. Explore my portfolio to learn more.">
-  <meta property="og:title" content="Randula Jayarathna | Operations Engineer & Data Scientist"/>
-  <meta property="og:description" content="Operations Engineer, L2/L3 Support, Data Scientist, with 3+ years experience. Check out my projects and resume."/>
-  <meta property="og:url" content="https://randula.live"/>
-  <meta property="og:type" content="website"/>
-  <meta property="og:image" content="https://randula.live/assets/img/@R.png"/>
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Randula Jayarathna | Operations Engineer & Data Scientist">
-  <meta name="twitter:description" content="Operations Engineer, L2/L3 Support, Data Scientist, with 3+ years experience. Check out my projects and resume.">
-  <meta name="twitter:image" content="https://randula.live/assets/img/@R.png">
+  <title>Randula Jayarathna — Operations Engineer & Data Analyst</title>
+  <meta name="description" content="Ops Engineer & Data Analyst. Python, SQL, Power BI. Based in the UK.">
   <link rel="canonical" href="https://randula.live">
 
+  <!-- Preload hero image -->
+  <link rel="preload" as="image" href="assets/img/hero-bg.jpg" imagesrcset="assets/img/hero-bg.webp" fetchpriority="high">
 
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- Open Graph / Twitter -->
+  <meta name="description" content="I'm Randula Jayarathna, an Operations Engineer and Data Scientist specializing in L2/L3 support and IT infrastructure. Explore my portfolio to learn more.">
+  <meta property="og:title" content="Randula Jayarathna — Ops Engineer & Data Analyst">
+  <meta property="og:description" content="99.99% uptime. Python and SQL projects.">
+  <meta property="og:url" content="https://randula.live">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://randula.live/assets/img/og-card.webp">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Randula Jayarathna — Ops Engineer & Data Analyst">
+  <meta name="twitter:description" content="Projects, resume, and contact.">
+  <meta name="twitter:image" content="https://randula.live/assets/img/og-card.webp">
+  <link rel="canonical" href="https://randula.live">
   <!-- Favicons -->
   <link href="assets/img/@R.png" rel="icon">
   <link href="assets/img/@R.png" rel="apple-touch-icon">
@@ -41,6 +51,7 @@
    <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-JJ8HB8ZJ0L"></script>
   <script>
+  
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
@@ -48,20 +59,25 @@
   gtag('config', 'G-JJ8HB8ZJ0L');
   </script>
   <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Randula Jayarathna",
-      "jobTitle": "Operations Engineer & Data Scientist",
-      "url": "https://randula.live",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "London",
-        "addressCountry": "United Kingdom"
-      },
-      "email": "randulajayarathna@gmail.com"
-    }
-    </script>
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Randula Jayarathna",
+    "jobTitle": "Operations Engineer & Data Analyst",
+    "url": "https://randula.live",
+    "email": "mailto:randulajayarathna@gmail.com",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "London",
+      "addressCountry": "United Kingdom"
+    },
+    "sameAs": [
+      "https://www.linkedin.com/in/randula-jayarathna/",
+      "https://github.com/randulajay",
+      "https://x.com/Randula_Jay"
+    ]
+  }
+</script>
 </head>
 
 <body class="index-page">
@@ -69,8 +85,10 @@
   <header id="header" class="header d-flex align-items-center fixed-top">
     <div class="container-fluid position-relative d-flex align-items-center justify-content-between">
 
-      <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0"></a>
-
+      <!-- <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0"></a> -->
+      <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0" aria-label="Home">
+        <span class="visually-hidden">Randula Jayarathna</span>
+      </a>
       <nav id="navmenu" class="navmenu">
         <ul>
           <li><a href="#hero" class="active">Home</a></li>
@@ -87,32 +105,73 @@
   </header>
   <main class="main">
     <section id="hero" class="hero section dark-background">
-      <!-- Background Image -->
-      <img src="assets/img/hero-bg.png" alt="Hero background showing abstract patterns" class="hero-bg" data-aos="fade-in">
-   
-      <!-- Particle Effect Background -->
-      <div id="particles"></div>
-    
-      <!-- Hero Content -->
-      <div class="container d-flex flex-column align-items-center justify-content-center text-center hero-container" data-aos="fade-up" data-aos-delay="200">
-        <h1>I am</h1>
-        <h1>Randula Jayarathna</h1>
-        <h2><span class="typed" data-typed-items="Operations Engineer, Data Analyst, Support Engineer L2/L3"></span></h2>
+    <img src="assets/img/hero-bg.jpg" alt="Randula portfolio banner" class="hero-bg" data-aos="fade-in" fetchpriority="high">
+    <div id="particles"></div>
 
-        <a href="forms/Randula Jayarathna.pdf" target="_blank" class="btn-rounded-white">
-          View My CV <i class="fa fa-arrow-circle-o-down" aria-hidden="true"></i>
-        </a>
-      </div>
-    </section>
+    <div class="container d-flex flex-column align-items-center justify-content-center text-center hero-container" data-aos="fade-up" data-aos-delay="200" role="banner">
+      <p lass="kicker">I am <br> Randula Jayarathna</p>
+      <p class="tagline"><span class="typed" data-typed-items="L2/L3 Support , Cloud , Automation ,Data-driven Solutions, Operations Engineer , Data Analyst , Infrastructure Specialist , Team Leader"></span></p>
+        <!-- Unified CTA stack -->
+         <div class="cta-stack">
+          <a href="forms/Randula-Jayarathna-CV.pdf" target="_blank" class="cta-pill cta--blue">
+            <span class="cta-icon" aria-hidden="true">
+              <!-- download -->
+              <svg viewBox="0 0 24 24"><path d="M12 3v9l3-3 1.4 1.4L12 15.8 7.6 10.4 9 9l3 3V3h0zM5 19h14v2H5z"/></svg>
+            </span>
+            <span class="cta-label">Download CV</span>
+          </a>
 
+          <a href="mailto:randulajayarathna@gmail.com" class="cta-pill cta--orange">
+            <span class="cta-icon" aria-hidden="true">
+              <!-- mail -->
+              <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2Zm0 4-8 5-8-5V6l8 5 8-5v2Z"/></svg>
+            </span>
+            <span class="cta-label">Hire Me</span>
+          </a>
+        </div>
+          
+
+
+
+    <!-- social -->
+     <!-- Add Social Media Links with Icons -->
+            <!-- Add Social Media Links with Icons -->
+          <div class="social-links-unique">
+            <a href="https://github.com/randulajay" target="_blank" class="social-link github"><i class="bi bi-github"></i></a>
+            <a href="https://www.linkedin.com/in/randula-jayarathna/" target="_blank" class="social-link linkedin"><i class="bi bi-linkedin"></i></a>
+            <a href="https://uk.pinterest.com/Randula_Jay/" target="_blank" class="social-link pinterest"><i class="bi bi-pinterest"></i></a>
+            <a href="https://x.com/Randula_Jay" target="_blank" class="social-link twitter"><i class="bi bi-twitter"></i></a>
+            <a href="https://www.facebook.com/randulajayarathna/" target="_blank" class="social-link facebook"><i class="bi bi-facebook"></i></a>
+            <a href="https://www.instagram.com/randula.j/" target="_blank" class="social-link instagram"><i class="bi bi-instagram"></i></a>
+          </div> 
+          <div>
+            <a href="#about" class="cta-pill cta--green">
+            <span class="cta-label">View My Work</span>
+            <span class="cta-icon" aria-hidden="true">
+              <!-- chevron down -->
+              <svg viewBox="0 0 24 24"><path d="M7.4 8.6 12 13.2l4.6-4.6 1.4 1.4L12 16 6 10l1.4-1.4Z"/></svg>
+            </span>
+          </a>
+          </div> 
+
+          
+    </div>
+  </section>
 
   <section id="about" class="about section">
     <div class="container section-title" data-aos="fade-up">
       <span class="description-title">About Me</span>
       <h2>About Me</h2>
-      <img src="assets/img/about_me.jpg" class="img-fluid about-profile-img" alt="About Me">
+      <img src="assets/img/about.webp" class="img-fluid about-profile-img" alt="About Me">
+      <h4>Professional Summary</h4>
       <p class="about-summary">
-        Award-winning Operations Engineer with over 3 years of experience in delivering data-driven insights and optimising IT infrastructure to drive business performance. Known for designing and implementing scalable ETL workflows, enhancing data quality, and streamlining complex database systems to support critical business goals. Proven expertise in L2 and L3 support, troubleshooting, and managing cloud and on-premises environments (Windows/Linux), using tools like Microsoft SCCM, ServiceNow, and Active Directory. Skilled in scripting for process automation and database management, achieving 99.99% system uptime, reducing resolution times by 35%, and improving service quality with measurable impact. Recently earned an MSc in Data Science with a focus on machine learning, enabling the delivery of innovative analytics solutions that bridge technical operations and strategic decision-making.
+        IT Infrastructure & Operations Engineer with 5+ years of experience delivering L2/L3 support, service reliability, and automation across global enterprises. Proven expertise in managing mission-critical 
+        systems supporting 30M+ users, consistently achieving 99.99% uptime and reducing MTTR by 35%. Strong technical proficiency in cloud platforms (AWS, Azure), DevOps tools (Docker, Kubernetes, Terraform), 
+        and data analytics (SQL, Python, Power BI, Tableau). Adept at driving process optimisation through automation and data-driven insights while effectively communicating with stakeholders at all levels. 
+        <br>Additionally, bring years of leadership experience in retail and operations management, with accountability for multi-site operations, large teams, and full P&L ownership. Recognised for delivering 
+        sales growth, operational efficiency, and cost reductions by implementing strategic initiatives and embedding high-performance, customer-centric cultures. Skilled at turning underperforming teams into top 
+        performers and leveraging analytics to optimise service delivery, staffing, and inventory.<br>Currently based in the London, United Kingdom with full working rights, offering a rare combination of technical depth and commercial
+        leadership to deliver measurable impact across IT and operations.
       </p>
     </div>
 
@@ -122,7 +181,7 @@
           <div class="row">
             <div class="col-lg-6">
               <ul>
-                <li><i class="bi bi-chevron-right"></i> <strong>Website:</strong> <span><a href="https://randula.live" target="_blank">https://randula.live</a></span></li>
+                <!-- <li><i class="bi bi-chevron-right"></i> <strong>Website:</strong> <span><a href="https://randula.live" target="_blank" rel="noopener noreferrer"> https://randula.live</a></span></li> -->
                 <li><i class="bi bi-chevron-right"></i> <strong>Phone:</strong> <span><a href="tel:+447392756406">+4473 9275 6406</a></span></li>               
               </ul>
             </div>
@@ -131,21 +190,21 @@
             <div class="col-lg-6">
               <ul>
                 <li><i class="bi bi-chevron-right"></i> <strong>Email:</strong> <span><a href="mailto:randulajayarathna@gmail.com">randulajayarathna@gmail.com</a></span></li>
-                <li><i class="bi bi-chevron-right"></i> <strong>City:</strong> <span>London, United Kingdom (available to relocate)</span></li>
+                <!-- <li><i class="bi bi-chevron-right"></i> <strong>City:</strong> <span>London, United Kingdom (available to relocate)</span></li> -->
               </ul>
             </div>
           
           </div>
                   <!-- LinkedIn Follow Button Centered -->
           <div class="col-12 text-center mt-3">
-            <a class="libutton" href="https://www.linkedin.com/comm/mynetwork/discovery-see-all?usecase=PEOPLE_FOLLOWS&followMember=randula-jayarathna" target="_blank">Follow on LinkedIn</a>
+            <a class="libutton" href="https://www.linkedin.com/comm/mynetwork/discovery-see-all?usecase=PEOPLE_FOLLOWS&followMember=randula-jayarathna" target="_blank" rel="noopener noreferrer">Follow on LinkedIn</a>
           </div>
 
           
           <!-- Add Social Media Links with Icons -->
           <div class="social-links d-flex justify-content-center">
             <a href="https://github.com/randulajay" target="_blank" rel="noopener noreferrer" class="social-link github"><i class="bi bi-github"></i></a>
-            <a href="https://www.linkedin.com/in/randula-jayarathna/" target="_blank" class="social-link linkedin"><i class="bi bi-linkedin"></i></a>
+            <a href="https://www.linkedin.com/in/randula-jayarathna/" target="_blank" rel="noopener noreferrer" class="social-link linkedin"><i class="bi bi-linkedin"></i></a>
             <a href="https://uk.pinterest.com/Randula_Jay/" target="_blank" rel="noopener noreferrer" class="social-link pinterest"><i class="bi bi-pinterest"></i></a>
             <a href="https://x.com/Randula_Jay" target="_blank" rel="noopener noreferrer" class="social-link twitter"><i class="bi bi-twitter"></i></a>
             <a href="https://www.facebook.com/randulajayarathna/" target="_blank" rel="noopener noreferrer" class="social-link facebook"><i class="bi bi-facebook"></i></a>
@@ -225,55 +284,103 @@
             </div><!-- Edn Resume Item -->
           </div>
           <!-- End of education section -->
-          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
-            
-            <h3 class="resume-title">Professional Experience</h3>
-            <div class="resume-item">
-              <h4>Operations Engineer</h4>
-              <h5>Oct 2020 - Sep 2022</h5>
-              <p><em>Virtusa</em></p>
-              <ul>
-                <li>Created Tableau dashboards improving business intelligence by 40% via predicting subscriber activity insights.</li>
-                <li>Developed and implemented innovative data models in Python/R, resulting in a 35% reduction in system load times while achieving optimal resource allocation across all operational processes.  </li>
-                <li>Enhanced SQL query performance and administered Oracle databases to improve processing speed and data integrity.</li>
-                <li>Prepared daily, weekly, and monthly reports, providing actionable insights to support key decision-making and drive continuous improvement across teams and organisational initiatives</li><li>Spearheaded Mobile Number Portability (MNP) to ensure seamless network connectivity for 30M+ subscribers. </li>
-                <li>Optimized L2 support processes by collaborating with other network service providers to resolve service queries, reducing average resolution time by 20%.</li>
-                <li>Addressed high-priority customer inquiries (P1-P2) through direct email, Remedy and ServiceNow ticketing systems enhancing incident resolution efficiency while achieving monthly increases in satisfaction rate by 35%.</li>
-                <li>Automated daily routine tasks using scripts and CronJobs to cut manual workload by 40%.</li>
-                <li>Executed detailed analyses on operational errors and log files to pinpoint underlying problems, enhancing overall system stability which led to an increase in incident response speed by 25%. </li>
-                <li>Integrated DevOps methodologies and ITIL practices to enhance platform security and system safety, achieving a 35% reduction in vulnerability response times.</li>
-                <li>Streamlined application performance on Cloud servers, refining both Linux and Windows environments to achieve 30% faster load times across the infrastructure.</li>
-                <li>Coordinated cross-functional teams by creating change requests during deployments and upgrades to ensure configuration changes in the production environment.</li>
-                <li>Maintained on-call support to ensure 99.99% system availability during high-pressure scenarios.</li>
-              </ul>
-            </div><!-- Edn Resume Item -->
+           <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+              <h3 class="resume-title">Professional Experience</h3>
 
-            <div class="resume-item">
-              <h4>Associate Infrastructure Operations Engineer</h4>
-              <h5>Feb 2020 - Oct 2020</h5>
-              <p><em>Stepping Stone Advertising, New York, NY</em></p>
-              <ul>
-                <li>Managed the BizTalk-based Data Management Tool (DMT) for seamless file transfers across McDonald's restaurants and enterprise systems worldwide; leveraged .NET, C#, and MS SQL to enhance data integrity. </li>
-                <li>Leveraged Microsoft 365 Business tools to streamline operational workflows and expediting issue resolution</li>
-                <li>Delivered L3 to resolving complex issues, managing system upgrades, and ensuring seamless operations, including new market onboarding.</li>
-                <li>Created 4+ design presentations and proposals a month for clients and account managers</li>
-              </ul>
-            </div><!-- Edn Resume Item -->
+              <div class="resume-item">
+                <h4>Infrastructure Operations Engineer</h4>
+                <h5>Oct 2020 – Sep 2022</h5>
+                <p><em>Virtusa – Colombo, Sri Lanka</em></p>
+                <ul>
+                  <li>Delivered L2 system support for Mobile Number Portability (MNP) operations serving 30M+ subscribers, ensuring uninterrupted service availability across mission-critical telecom systems.</li>
+                  <li>Resolved over 150 support tickets weekly using Siebel and Remedy, maintaining a 98% SLA compliance rate and delivering timely technical assistance.</li>
+                  <li>Built real-time dashboards with Python (Pandas, NumPy, SciPy, Matplotlib) and R (ggplot2, Shiny) and REST APIs to visualise subscriber activities, enabling early trend detection, and a 35% reduction in escalations.</li>
+                  <li>Developed data pipelines and applied advanced analytics for anomaly detection, statistical ¬ling, and trend analysis of large-scale MNP logs, uncovering fault patterns and supporting predictive incident response and executive reporting.</li>
+                  <li>Optimised database performance using indexing, triggers, multi-threaded operations, and advanced sorting procedures, enhancing SQL-driven processes by 40%.</li>
+                  <li>Conducted root cause analysis for high-priority incidents, reducing Mean Time to Repair by 35%, and provided remote support for Windows and Linux applications.</li>
+                  <li>Automated log analysis and system diagnostics via CRON scheduling to decrease manual workload by 40% within 6 months.</li>
+                  <li>Managed Active Directory accounts, group policies, and permissions for over 500 enterprise users, ensuring secure and efficient access.</li>
+                  <li>Collaborated with cross-functional teams, including development and IT support, to execute seamless system deployments and upgrades aligned with ITIL best practices.</li>
+                  <li>Maintained 99.99% uptime through 24/7 on-call support and structured incident management, ensuring prompt resolution of critical application issues.</li>
+                </ul>
+              </div><!-- End Resume Item -->
 
-            <div class="resume-item">
-              <h4>Trainee Software Engineer</h4>
-              <h5>Nov 2019 - Feb 2020</h5>
-              <p><em>Co-operative Insurance Company Limited</em></p>
-              <ul>
-                <li>Engineered robust backend solutions to streamline operations for an insurance platform, resulting in consistent throughput exceeding 150 queries every single minute throughout peak usage periods.</li>
-              </ul>
-            </div><!-- Edn Resume Item -->
-            <div class="resume-item">
-              <h4>Internship in Software Engineering </h4>
-              <h5>May 2019 - Nov 2020</h5>
-              <p><em>IdeaCode Global (PVT) LTD</em></p>
-            </div><!-- Edn Resume Item -->
-          </div>
+              <div class="resume-item">
+                <h4>Associate Infrastructure Operations Engineer</h4>
+                <h5>Feb 2020 – Oct 2020</h5>
+                <p><em>Virtusa – Colombo, Sri Lanka</em></p>
+                <ul>
+                  <li>Administered L3 support for data integration applications by ensuring seamless synchronisation between global stores using BizTalk EAI tools, consistent with application support practices.</li>
+                  <li>Streamlined end-to-end data transfers by troubleshooting integration errors and optimising EAI workflows, reducing processing delays by 25% and enhancing application performance.</li>
+                  <li>Enhanced enterprise IT workflows by automating repetitive tasks with Microsoft 365 Power Automate and refining cross-team coordination through comprehensive documentation and Teams integration.</li>
+                </ul>
+              </div><!-- End Resume Item -->
+
+              <div class="resume-item">
+                <h4>Trainee Software Engineer</h4>
+                <h5>Nov 2019 – Feb 2020</h5>
+                <p><em>Co-operative Insurance Company Limited – Colombo, Sri Lanka</em></p>
+                <ul>
+                  <li>Developed and optimised backend solutions for an enterprise insurance platform, ensuring high system throughput (150+ queries per minute) even during peak periods.</li>
+                  <li>Applied SQL and server-side programming to improve transaction handling, data validation, and system stability, directly enhancing customer experience.</li>
+                </ul>
+              </div><!-- End Resume Item -->
+
+              <div class="resume-item">
+                <h4>Internship in Software Engineering</h4>
+                <h5>May 2019 – Nov 2019</h5>
+                <p><em>IdeaCode Global (PVT) LTD – Colombo, Sri Lanka</em></p>
+              </div><!-- End Resume Item -->
+            </div>
+            <!-- addtion -->
+             <h3 class="resume-title">Career Development & Leadership Experience</h3>
+              <p><em>(Undertaken alongside MSc studies, UK 2022–2025)</em></p>
+
+              <div class="resume-item">
+                <h4>Associate Flor Lead</h4>
+                <h5>May 2025 – Present</h5>
+                <p><em>Whole Foods Market – London, UK</em></p>
+                <ul>
+                  <li>Led daily operations, supplier management, and compliance, consistently exceeding sales targets and quality standards.</li>
+                  <li>Applied Power BI and advanced Excel to improve forecasting accuracy, reducing overstocking and boosting stock availability.</li>
+                </ul>
+              </div><!-- End Resume Item -->
+
+              <div class="resume-item">
+                <h4>Multisite Team Lead</h4>
+                <h5>Jan 2025 – May 2025</h5>
+                <p><em>Tesco – London, UK</em></p>
+                <ul>
+                  <li>Directed café operations across multiple sites, leading 30+ staff, reducing waste by 15%, and safeguarding profit margins through tighter stock control.</li>
+                </ul>
+              </div><!-- End Resume Item -->
+
+              <div class="resume-item">
+                <h4>Shift Manager</h4>
+                <h5>Jan 2023 – Dec 2024</h5>
+                <p><em>Taco Bell – Cheltenham, UK</em></p>
+                <ul>
+                  <li>Oversaw multi-shift teams in high-volume operations, optimised rotas to cut overtime by 20%, and strengthened compliance with food safety and audit standards.</li>
+                </ul>
+              </div><!-- End Resume Item -->
+                   <div class="cta-stack">
+          <a href="forms/Randula-Jayarathna-CV.pdf" target="_blank" class="cta-pill cta--blue">
+            <span class="cta-icon" aria-hidden="true">
+              <!-- download -->
+              <svg viewBox="0 0 24 24"><path d="M12 3v9l3-3 1.4 1.4L12 15.8 7.6 10.4 9 9l3 3V3h0zM5 19h14v2H5z"/></svg>
+            </span>
+            <span class="cta-label">Download CV</span>
+          </a>
+        </div>
+          
+
+
+
+
+
+
+
+
         </div>
       </div>
     </section><!-- /Resume Section -->
@@ -340,7 +447,7 @@
 
             <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
               <div class="portfolio-content h-100">
-                <img src="assets/img/portfolio/LMS.png" class="img-fluid" alt="">
+                <img src="assets/img/portfolio/LMS.png" class="img-fluid" loading="lazy" width="600" height="400" alt="Library Management System dashboard">
                 <div class="portfolio-info">
                   <p>Library Management System - JavaFX, Java Database Connectivity (JDBC) MVC architecture</p>
                   <a href="assets/img/portfolio/LMS.png" data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
@@ -351,7 +458,8 @@
 
             <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item isotope-item filter-books">
               <div class="portfolio-content h-100">
-                <img src="assets/img/portfolio/POS.png" class="img-fluid" alt="">
+                <img src="assets/img/portfolio/POS.png" class="img-fluid" loading="lazy" width="600" height="400" alt="Library Management System dashboard">
+                <!-- <img src="assets/img/portfolio/POS.png" class="img-fluid" alt=""> -->
                 <div class="portfolio-info">
                   <p>Point of sale system - JavaFX, JDBC, SQL, Leyard Architecture</p>
                   <a href="assets/img/portfolio/POS.png" data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
@@ -362,7 +470,8 @@
 
             <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
               <div class="portfolio-content h-100">
-                <img src="assets/img/portfolio/Pirets.png" class="img-fluid" alt="">
+                <!-- <img src="assets/img/portfolio/Pirets.png" class="img-fluid" alt=""> -->
+                 <img src="assets/img/portfolio/Pirets.png" class="img-fluid" loading="lazy" width="600" height="400" alt="Library Management System dashboard">
                 <div class="portfolio-info">
                   <p>Pirets (Cross platform game) - QT C++</p>
                   <a href="assets/img/portfolio/Pirets.png" data-gallery="portfolio-gallery-branding" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
@@ -373,7 +482,8 @@
 
             <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item isotope-item filter-books">
               <div class="portfolio-content h-100">
-                <img src="assets/img/portfolio/DMS.png" class="img-fluid" alt="">
+                <!-- <img src="assets/img/portfolio/DMS.png" class="img-fluid" alt=""> -->
+                 <img src="assets/img/portfolio/DMS.png" class="img-fluid" loading="lazy" width="600" height="400" alt="Library Management System dashboard">
                 <div class="portfolio-info">
                   <p>Distributed Library Management System - CSS, Java, JavaScript, HTML, SQL</p>
                   <a href="assets/img/portfolio/DMS.png" data-gallery="portfolio-gallery-book" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
@@ -384,7 +494,8 @@
 
             <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
               <div class="portfolio-content h-100">
-                <img src="assets/img/portfolio/Packer.jpg" class="img-fluid" alt="">
+                <!-- <img src="assets/img/portfolio/Packer.jpg" class="img-fluid" alt=""> -->
+                 <img src="assets/img/portfolio/Packer.jpg" class="img-fluid" loading="lazy" width="600" height="400" alt="Library Management System dashboard">
                 <div class="portfolio-info">
                   <p>Packer - Private Parking Management - Innovated a parking management solution consisting of two Android apps for drivers and facility owners. The app combined payment features that reduced transaction times by 75%</p>
                   <a href="assets/img/portfolio/Packer.jpg" data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
@@ -395,7 +506,8 @@
 
             <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
               <div class="portfolio-content h-100">
-                <img src="assets/img/portfolio/Virtusa.webp" class="img-fluid" alt="">
+                <!-- <img src="assets/img/portfolio/Virtusa.webp" class="img-fluid" alt=""> -->
+                 <img src="assets/img/portfolio/Virtusa.webp" class="img-fluid" loading="lazy" width="600" height="400" alt="Library Management System dashboard">
                 <div class="portfolio-info">
                   <p>Spearheaded the optimisation of MNP for MTN South Africa, automating workflows that boosted efficiency by 25% and managing databases for 30M+ subscribers. Diagnosed issues from an average of 150+ Tickets per week, contributing to enhanced user experience through robust L2 support practices that drove improved client retention rates overall.</p>
                   <a href="assets/img/portfolio/Virtusa.webp" data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
@@ -406,7 +518,8 @@
 
             <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
               <div class="portfolio-content h-100">
-                <img src="assets/img/portfolio/Virtusa.webp" class="img-fluid" alt="">
+                <!-- <img src="assets/img/portfolio/Virtusa.webp" class="img-fluid" alt=""> -->
+                 <img src="assets/img/portfolio/Virtusa.webp" class="img-fluid" loading="lazy" width="600" height="400" alt="Library Management System dashboard">
                 <div class="portfolio-info">
                   <p>Executed the global data transfer solution for 34,000+ McDonald's locations worldwide. Collaborated with the Enterprise Application Integration (EAI) Service to enable seamless end-to-end datamovement across platforms, improving operational efficiency and ensuring data consistency.</p>
                   <a href="assets/img/portfolio/Virtusa.webp" data-gallery="portfolio-gallery-branding" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
@@ -417,7 +530,8 @@
 
             <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item isotope-item filter-branding">
               <div class="portfolio-content h-100">
-                <img src="assets/img/portfolio/Starbucks.png" class="img-fluid" alt="">
+                <!-- <img src="assets/img/portfolio/Starbucks.png" class="img-fluid" alt=""> -->
+                <img src="assets/img/portfolio/Starbucks.png" class="img-fluid" loading="lazy" width="600" height="400" alt="Library Management System dashboard">
                 <div class="portfolio-info">
                   <p>DataCraft for Business: Applied Analysis Toolkit</p>
                   <a href="assets/img/portfolio/Starbucks.png" data-gallery="portfolio-gallery-book" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
@@ -428,7 +542,8 @@
 
             <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item isotope-item filter-branding">
               <div class="portfolio-content h-100">
-                <img src="assets/img/SCAM.jpg" class="img-fluid" alt="">
+                <!-- <img src="assets/img/SCAM.jpg" class="img-fluid" alt=""> -->
+                 <img src="assets/img/img/SCAM.jpg" class="img-fluid" loading="lazy" width="600" height="400" alt="Library Management System dashboard">
                 <div class="portfolio-info">
                   <p>Decoding Spam: A Machine Learning Journey to Detect and Defeat Fraudulent Emails</p>
                   <a href="assets/img/SCAM.jpg" data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
@@ -439,7 +554,7 @@
 
             <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item isotope-item filter-branding">
               <div class="portfolio-content h-100">
-                <img src="assets/img/portfolio/ukscams/18.jpg" class="img-fluid" alt="">
+                <img src="assets/img/portfolio/ukscams/18.jpg" class="img-fluid" loading="lazy" alt="">
                 <div class="portfolio-info">
                   <p>Comparative Analysis of Machine Learning Models for Spam Detection</p>
                   <a href="assets/img/portfolio/ukscams/18.jpg" data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
@@ -473,7 +588,7 @@
         <div class="row gy-4">
 
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-            <div class="skill-box" style="background-image: url('assets/img/skills/winmac.jpg'); background-size: cover; background-position: center;"> 
+            <div class="skill-box" loading="lazy" style="background-image: url('assets/img/skills/winmac.jpg'); background-size: cover; background-position: center;"> 
               <h3>Operating Systems</h3>
               <p>Efficient in handling various operating environments to ensure seamless performance and system reliability.</p>
               <ul>
@@ -485,7 +600,7 @@
           </div>
 
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-            <div class="skill-box" style="background-image: url('assets/img/skills/pro.jpg.avif'); background-size: cover; background-position: center;">
+            <div class="skill-box" loading="lazy" style="background-image: url('assets/img/skills/pro.jpg.avif'); background-size: cover; background-position: center;">
               <h3>Programming Languages</h3>
               <p>Proficient in multiple languages, adept at building robust applications and automating processes.</p>
               <ul>
@@ -498,7 +613,7 @@
           </div>
 
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
-            <div class="skill-box" style="background-image: url('assets/img/skills/data.jpg'); background-size: cover; background-position: center;">
+            <div class="skill-box" loading="lazy" style="background-image: url('assets/img/skills/data.jpg'); background-size: cover; background-position: center;">
               <h3>SQL/Database Management</h3>
               <p>Experienced in SQL queries and database architecture, optimizing performance and ensuring data integrity.</p>
               <ul>
@@ -509,7 +624,7 @@
           </div>
 
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
-            <div class="skill-box" style="background-image: url('assets/img/skills/Cloud&Devops.svg'); background-size: cover; background-position: center;">
+            <div class="skill-box" loading="lazy" style="background-image: url('assets/img/skills/Cloud&Devops.svg'); background-size: cover; background-position: center;">
               <h3>DevOps & Cloud Tools</h3>
               <p>Hands-on experience in cloud platforms and DevOps tools to streamline deployment and manage infrastructure.</p>
               <ul>
@@ -524,7 +639,7 @@
           </div>
 
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
-            <div class="skill-box" style="background-image: url('assets/img/skills/infra.png'); background-size: cover; background-position: center;">
+            <div class="skill-box" loading="lazy" style="background-image: url('assets/img/skills/infra.png'); background-size: cover; background-position: center;">
               <h3>Infrastructure as Code</h3>
               <p>Efficient in Infrastructure as Code practices to manage and provision computing infrastructure through scripts.</p>
               <ul>
@@ -534,7 +649,7 @@
           </div>
 
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="600">
-            <div class="skill-box" style="background-image: url('assets/img/skills/dataana.jpg'); background-size: cover; background-position: center;">
+            <div class="skill-box" loading="lazy" style="background-image: url('assets/img/skills/dataana.jpg'); background-size: cover; background-position: center;">
               <h3>Analytics & Visualisation</h3>
               <p>Expertise in data analysis and visualisation tools to derive actionable insights and present data effectively.</p>
               <ul>
@@ -546,7 +661,7 @@
           </div>
 
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="700">
-            <div class="skill-box" style="background-image: url('assets/img/skills/erp.webp'); background-size: cover; background-position: center;">
+            <div class="skill-box" loading="lazy" style="background-image: url('assets/img/skills/erp.webp'); background-size: cover; background-position: center;">
               <h3>ERP Systems</h3>
               <p>Familiar with ERP systems to streamline business processes and enhance operational efficiency.</p>
               <ul>
@@ -599,7 +714,7 @@
 
           <div class="col-lg-3 col-md-4">
             <div class="gallery-item">
-              <a href="assets/img/galary/1.jpeg" class="glightbox" data-gallery="images-gallery">
+              <a href="assets/img/galary/1.jpeg" class="glightbox" loading="lazy" data-gallery="images-gallery">
                 <img src="assets/img/galary/1.jpeg" alt="" class="img-fluid">
               </a>
             </div>
@@ -607,7 +722,7 @@
 
           <div class="col-lg-3 col-md-4">
             <div class="gallery-item">
-              <a href="assets/img/galary/2.jpeg" class="glightbox" data-gallery="images-gallery">
+              <a href="assets/img/galary/2.jpeg" class="glightbox" loading="lazy" data-gallery="images-gallery">
                 <img src="assets/img/galary/2.jpeg" alt="" class="img-fluid">
               </a>
             </div>
@@ -615,7 +730,7 @@
 
           <div class="col-lg-3 col-md-4">
             <div class="gallery-item">
-              <a href="assets/img/galary/3.jpeg" class="glightbox" data-gallery="images-gallery">
+              <a href="assets/img/galary/3.jpeg" class="glightbox" loading="lazy" data-gallery="images-gallery">
                 <img src="assets/img/galary/3.jpeg" alt="" class="img-fluid">
               </a>
             </div>
@@ -623,8 +738,8 @@
 
           <div class="col-lg-3 col-md-4">
             <div class="gallery-item">
-              <a href="assets/img/galary/4.jpeg" class="glightbox" data-gallery="images-gallery">
-                <img src="assets/img/galary/4.jpeg" alt="" class="img-fluid">
+              <a href="assets/img/galary/4.webp" class="glightbox" loading="lazy" data-gallery="images-gallery">
+                <img src="assets/img/galary/4.webp" alt="" class="img-fluid">
               </a>
             </div>
           </div><!-- End Gallery Item -->
@@ -751,10 +866,6 @@
   <script src="https://cdn.jsdelivr.net/gh/jnicol/particleground/jquery.particleground.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
   <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-
-
-
-
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
 
