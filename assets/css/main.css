@@ -2009,4 +2009,588 @@ section,
   fill: currentColor;
 }
 
-/* file uploaded */
+/* down */
+.scroll-cue {
+  position: relative;
+  overflow: hidden;
+  transform: translateZ(0);
+}
+
+.scroll-cue .cta-icon {
+  display: grid;
+  place-items: center;
+}
+
+.scroll-cue-icon {
+  width: 22px;
+  height: 22px;
+  animation: cueFloat 1.6s ease-in-out infinite;
+  will-change: transform;
+}
+
+.scroll-cue:hover .scroll-cue-icon {
+  animation: cueBounce 0.7s ease-in-out infinite;
+}
+
+.scroll-cue:active .scroll-cue-icon {
+  transform: translateY(2px);
+}
+
+.scroll-cue::after {
+  content: "";
+  position: absolute;
+  inset: -60%;
+  background: radial-gradient(circle, rgba(255,255,255,0.35), rgba(255,255,255,0) 60%);
+  transform: scale(0);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.scroll-cue:hover::after {
+  animation: cueRipple 0.8s ease-out;
+}
+
+@keyframes cueFloat {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(6px); }
+  100% { transform: translateY(0); }
+}
+
+@keyframes cueBounce {
+  0% { transform: translateY(0); }
+  40% { transform: translateY(7px); }
+  60% { transform: translateY(4px); }
+  100% { transform: translateY(0); }
+}
+
+@keyframes cueRipple {
+  0% { transform: scale(0.2); opacity: 0.6; }
+  100% { transform: scale(1); opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-cue-icon { animation: none; }
+  .scroll-cue:hover .scroll-cue-icon { animation: none; }
+  .scroll-cue:hover::after { animation: none; }
+}
+
+
+
+/* new skills */
+.skill-box-modern {
+    padding: 30px;
+    background: #fff;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    height: 100%;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+.skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 15px;
+}
+.skill-tags span {
+    background: #f0f4f8;
+    color: #0563af;
+    padding: 4px 12px;
+    border-radius: 50px;
+    font-size: 13px;
+    font-weight: 600;
+}
+.icon-box i {
+    font-size: 32px;
+    color: #0563af;
+    margin-bottom: 15px;
+    display: inline-block;
+}
+/* new skills */
+/* Glassmorphism Card Style */
+.skill-card {
+  padding: 40px 25px;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  height: 100%;
+  text-align: left;
+}
+
+.skill-card:hover {
+  transform: translateY(-12px);
+  background: #ffffff;
+  box-shadow: 0 15px 45px rgba(5, 99, 175, 0.12);
+}
+
+/* Icon Animation */
+.icon-circle {
+  width: 60px;
+  height: 60px;
+  background: #f0f7ff;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0563af;
+  font-size: 28px;
+  margin-bottom: 20px;
+  transition: 0.5s;
+}
+
+.skill-card:hover .icon-circle {
+  background: #0563af;
+  color: #fff;
+  transform: scale(1.1) rotate(10deg);
+}
+
+/* Modern Tag Design */
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 15px;
+}
+
+.tag {
+  background: #f1f4f9;
+  color: #555;
+  padding: 5px 14px;
+  border-radius: 50px;
+  font-size: 12px;
+  font-weight: 600;
+  border: 1px solid transparent;
+  transition: 0.3s ease;
+}
+
+.skill-card:hover .tag {
+  background: #e1e9f5;
+  color: #0563af;
+}
+
+.tag:hover {
+  border-color: #0563af;
+  transform: scale(1.05);
+}
+
+/* projects */
+/* Container for the card */
+.project-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  background: #fff;
+}
+
+/* Image zoom effect */
+.project-card img {
+  transition: transform 0.6s ease;
+  width: 100%;
+  height: 300px; /* Uniform height for clean grid */
+  object-fit: cover;
+}
+
+.project-card:hover img {
+  transform: scale(1.15);
+}
+
+/* Glassmorphism Overlay */
+.project-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(5, 99, 175, 0.9) 0%, rgba(5, 99, 175, 0.4) 100%);
+  display: flex;
+  align-items: flex-end;
+  padding: 30px;
+  opacity: 0;
+  transition: all 0.4s ease;
+}
+
+.project-card:hover .project-overlay {
+  opacity: 1;
+}
+
+/* Text styling within overlay */
+.project-text h4 {
+  color: #fff;
+  font-weight: 700;
+  margin-bottom: 5px;
+  transform: translateY(20px);
+  transition: 0.4s 0.1s;
+}
+
+.project-text span {
+  color: rgba(255,255,255,0.8);
+  font-size: 13px;
+  display: block;
+  margin-bottom: 10px;
+  transform: translateY(20px);
+  transition: 0.4s 0.2s;
+}
+
+.project-text p {
+  color: #fff;
+  font-size: 14px;
+  line-height: 1.4;
+  transform: translateY(20px);
+  transition: 0.4s 0.3s;
+}
+
+/* Reveal text on hover */
+.project-card:hover .project-text h4,
+.project-card:hover .project-text span,
+.project-card:hover .project-text p {
+  transform: translateY(0);
+}
+
+/* Links icons */
+.project-links {
+  margin-top: 15px;
+}
+
+.project-links a {
+  color: #fff;
+  font-size: 24px;
+  margin-right: 15px;
+  transition: 0.3s;
+}
+
+.project-links a:hover {
+  color: #ffc107; /* Highlight color */
+}
+
+/* journey */
+/* Hide the animated journey arrows on mobile and tablets */
+@media (max-width: 991px) {
+    .journey-svg {
+        display: none !important;
+    }
+    
+    /* Optional: Reset image spacing for mobile so they don't look disconnected */
+    .journey-item img {
+        height: auto;
+        margin-bottom: 20px;
+    }
+}
+.journey {
+  background: #ffffff; /* Dark background makes the white arrow pop */
+  padding: 60px 0;
+  overflow: hidden;
+}
+
+.journey-wrapper {
+  position: relative;
+  z-index: 2;
+}
+
+.journey-col {
+  padding: 10px;
+  text-align: center;
+}
+
+.journey-info {
+  color: #000000;
+  font-weight: 700;
+  margin-bottom: 15px;
+  font-size: 1.1rem;
+}
+
+.journey-item {
+  border-radius: 10px;
+  overflow: hidden;
+  /* box-shadow: 0 10px 30px rgba(0,0,0,0.5); */
+  transition: transform 0.3s ease;
+}
+
+.journey-item img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  filter: grayscale(30%);
+}
+
+.journey-item:hover {
+  transform: scale(1.02);
+}
+
+.freedom-line-container {
+    padding: 20px 0 60px 0;
+    position: relative;
+    overflow: hidden;
+    background: #ffffff;
+}
+
+.freedom-svg {
+    width: 100%;
+    height: 100px;
+    display: block;
+}
+
+#freedom-path {
+    fill: none;
+    stroke: #f39c12; /* Deep professional blue for contrast on white */
+    stroke-width: 3;
+    stroke-linecap: round;
+    /* Maintain the speed and flow */
+    transition: stroke-dashoffset 0.05s linear; 
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+}
+
+/* Updated Marker for Contrast */
+#freedom-head path {
+    fill: #2c3e50;
+}
+
+/* Resume Button Adjusted for White Background */
+.btn-resume {
+    display: inline-block;
+    padding: 12px 35px;
+    background: #34495e;
+    border: none;
+    color: #ffffff;
+    border-radius: 5px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.btn-resume:hover {
+    background: #2c3e50;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+
+/* Hide line on Mobile/Tablet to avoid layout breaks */
+@media (max-width: 991px) {
+    .freedom-line-container {
+        display: none;
+    }
+}
+
+
+/* contact */
+/* Section & Title */
+.subtitle {
+    font-size: 1.1rem;
+    color: #666;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Info Cards */
+.contact-card {
+    padding: 30px;
+    border-radius: 15px;
+    transition: 0.3s;
+    background: #ffffff;
+}
+
+.contact-card:hover {
+    box-shadow: 0 10px 30px #7f8c8d;
+    transform: translateY(-5px);
+}
+
+.icon-box {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 15px;
+    color: #ffffff; 
+
+    font-size: 1.6rem;
+}
+
+/* Social Links */
+.social-link {
+    font-size: 1.2rem;
+    color: #444;
+    margin: 0 10px;
+    transition: 0.3s;
+}
+
+
+
+/* Form Container */
+.modern-form {
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.04);
+}
+
+/* THE FIX: Underline Input with No Overlap */
+.underline-input {
+    border: none !important;
+    border-bottom: 2px solid #eee !important;
+    border-radius: 0 !important;
+    /* Large top padding creates a safe zone for text */
+    padding: 2rem 0.5rem 0.5rem 0 !important; 
+    background: transparent !important;
+    box-shadow: none !important;
+    height: 75px !important;
+}
+
+.underline-input:focus {
+    border-bottom-color: #f39c12 !important;
+}
+
+/* THE FIX: Floating Label Positioning */
+.form-floating label {
+    padding: 1.2rem 0;
+    left: 0;
+    color: #333232;
+    transition: all 0.2s ease;
+}
+
+.form-floating > .form-control:focus ~ label,
+.form-floating > .form-control:not(:placeholder-shown) ~ label {
+    /* Lift label much higher to clear the text area */
+    transform: scale(0.85) translateY(-2.2rem) translateX(0) !important;
+    color: #f39c12 !important;
+    opacity: 1;
+}
+
+/* Button Styling */
+.btn-send {
+    background: #f39c12;
+    color: #fff;
+    border: none;
+    padding: 14px 45px;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.btn-send:hover {
+    background: #e67e22;
+    transform: scale(1.05);
+    box-shadow: 0 8px 15px rgba(243, 156, 18, 0.3);
+}
+
+/* Autofill Hack: Prevents blue background mask */
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px white inset !important;
+    -webkit-text-fill-color: #333 !important;
+}
+
+
+
+.contact-card-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.contact-card-link .info-item {
+  cursor: pointer;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.contact-card-link:hover .info-item {
+  transform: translateY(-3px);
+}
+
+.contact-card-link:focus-visible {
+  outline: 3px solid rgba(13,110,253,0.35);
+  outline-offset: 6px;
+  border-radius: 16px;
+}
+/* 1. Make the contact links (Phone/Email) Black */
+.contact-link, 
+.contact-card p a {
+    color: #000000 !important; 
+    text-decoration: none !important;
+    transition: 0.3s ease;
+    font-weight: 500;
+}
+
+.contact-link:hover, 
+.contact-card p a:hover {
+    color: #f39c12 !important; /* Only turns orange on hover */
+}
+
+/* 2. Fix Overlapping Text: Create a 'Safe Zone' */
+.underline-input {
+    color: #000000 !important; /* Forces typed text to be black */
+    padding: 1.8rem 0.5rem 0.5rem 0 !important; /* Increases gap at the top */
+    border: none !important;
+    border-bottom: 2px solid #eeeeee !important;
+    background: transparent !important;
+    height: 70px !important;
+}
+
+/* 3. Lift Label Higher: Prevents it from sitting on your text */
+.form-floating label {
+    color: #999999 !important;
+    padding-left: 0 !important;
+}
+
+.form-floating > .form-control:focus ~ label,
+.form-floating > .form-control:not(:placeholder-shown) ~ label {
+    transform: scale(0.85) translateY(-2.2rem) translateX(0) !important;
+    color: #f39c12 !important; /* Accent orange for the active label */
+    opacity: 1;
+}
+
+/* 4. Focus State: Orange underline */
+.underline-input:focus {
+    border-bottom-color: #f39c12 !important;
+    box-shadow: none !important;
+}
+
+/* 5. Clean Autofill: Removes the blue box that hides text */
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px white inset !important;
+    -webkit-text-fill-color: #000000 !important;
+}
+
+
+/* Hero Section Modernization */
+
+/* 1. Intro Text: Subtle and spaced */
+.hero-intro {
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: #f39c12; /* Matching your brand orange */
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+/* 2. The Name: Massive and high-impact */
+.hero-name {
+    font-size: clamp(3rem, 8vw, 5rem); /* Responsive sizing: gets smaller on mobile */
+    font-weight: 800;
+    color: #ffffff;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    letter-spacing: -1px;
+}
+
+/* 3. Color Accent: Highlights your last name */
+.accent-color {
+    color: #f39c12;
+    position: relative;
+    display: inline-block;
+}
+
+/* 4. The Tagline: Clean and readable */
+.hero-tagline {
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 30px;
+}
+
+/* Mobile Tweak: Ensure it doesn't look too cramped on phones */
+@media (max-width: 768px) {
+    .hero-intro { font-size: 0.9rem; letter-spacing: 2px; }
+    .hero-tagline { font-size: 1.2rem; }
+}

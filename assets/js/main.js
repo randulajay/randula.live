@@ -248,3 +248,82 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 })();
+
+
+//down:
+  document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      var targetId = link.getAttribute('href');
+      var targetEl = document.querySelector(targetId);
+      if (targetEl) {
+        e.preventDefault();
+        targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+});
+
+//journey:
+window.addEventListener('scroll', function() {
+    if (window.innerWidth < 992) return;
+
+    const section = document.querySelector('#journey');
+    const path = document.querySelector('#freedom-path');
+    
+    if (!section || !path) return;
+
+    const pathLength = path.getTotalLength();
+    const rect = section.getBoundingClientRect();
+    const windowHeight = window.innerHeight;
+
+    // Trigger animation as you scroll through the photos
+    let totalProgress = (windowHeight - rect.top) / (windowHeight + rect.height);
+    
+    // Triple Speed Multiplier
+    let drawProgress = totalProgress * 3.0; 
+    drawProgress = Math.min(Math.max(drawProgress, 0), 1);
+
+    path.style.strokeDasharray = pathLength;
+    path.style.strokeDashoffset = pathLength - (pathLength * drawProgress);
+});
+
+
+// form
+document.getElementById('contact-form').addEventListener('submit', function(e) {
+    e.preventDefault(); // Prevents the Basin redirect page
+
+    const form = this;
+    const btn = document.getElementById('submit-btn');
+    const statusMsg = document.querySelector('.sent-message');
+    
+    // UI Feedback
+    btn.innerHTML = "Sending...";
+    btn.disabled = true;
+
+    fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+    })
+    .then(response => {
+        if (response.ok) {
+            // Success: Reset and show message
+            if (statusMsg) {
+                statusMsg.style.display = 'block';
+                statusMsg.innerHTML = "Success! I'll get back to you shortly.";
+            }
+            form.reset();
+            // Optional: Hide success message after 5 seconds
+            setTimeout(() => { if(statusMsg) statusMsg.style.display = 'none'; }, 5000);
+        } else {
+            alert("Submission failed. Please try again.");
+        }
+    })
+    .catch(error => {
+        console.error("Submission error:", error);
+        alert("An error occurred. Check your connection.");
+    })
+    .finally(() => {
+        btn.innerHTML = 'Send Message <i class="bi bi-send-fill ms-2"></i>';
+        btn.disabled = false;
+    });
+});
