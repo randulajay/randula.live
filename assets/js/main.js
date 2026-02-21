@@ -185,9 +185,9 @@
     new Typed('.typed', {
       strings: typed_strings,
       loop: true,
-      typeSpeed: 100,
-      backSpeed: 50,
-      backDelay: 2000
+      typeSpeed: 50,
+      backSpeed: 30,
+      backDelay: 1000
     });
   }
  
@@ -219,17 +219,16 @@
 // Simulate success or error condition
 const isSuccess = true; // Change this to false to simulate an error
 
-setTimeout(() => {
-  loading.style.display = 'none'; // Hide loading
+// setTimeout(() => {
+//   loading.style.display = 'none'; // Hide loading
 
-  if (isSuccess) {
-    successMessage.style.display = 'block'; // Show success message
-  } else {
-    errorMessage.style.display = 'block'; // Show error message
-  }
-
-  form.reset(); // Reset the form fields
-}, 2000);
+//   if (isSuccess) {
+//     successMessage.style.display = 'block'; // Show success message
+//   } else {
+//     errorMessage.style.display = 'block'; // Show error message
+//   }
+//   form.reset(); // Reset the form fields
+// }, 2000);
 
 
 // dots
