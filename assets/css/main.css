@@ -7,37 +7,37 @@
 }
 
 /* Global Colors - The following color variables are used throughout the website. Updating them here will change the color scheme of the entire website */
-:root { 
-  --background-color: #ffffff; /* Background color for the entire website, including individual sections */
-  --default-color: #444444; /* Default color used for the majority of the text content across the entire website */
-  --heading-color: #3b434a; /* Color for headings, subheadings and title throughout the website */
+:root {
+  --background-color: #000000; /* Background color for the entire website, including individual sections */
+  --default-color: #b8b8b8; /* Default color used for the majority of the text content across the entire website */
+  --heading-color: #f0f0f0; /* Color for headings, subheadings and title throughout the website */
   --accent-color: #ffbb27; /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
-  --surface-color: #ffffff; /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
-  --contrast-color: #000000; /* Contrast color for text, ensuring readability against backgrounds of accent, heading, or default colors. */
+  --surface-color: #0d0d0d; /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
+  --contrast-color: #ffffff; /* Contrast color for text, ensuring readability against backgrounds of accent, heading, or default colors. */
 }
 
 /* Nav Menu Colors - The following color variables are used specifically for the navigation menu. They are separate from the global colors to allow for more customization options */
 :root {
   --nav-color: #ffffff;  /* The default color of the main navmenu links */
   --nav-hover-color: #ffbb27; /* Applied to main navmenu links when they are hovered over or active */
-  --nav-mobile-background-color: #ffffff; /* Used as the background color for mobile navigation menu */
-  --nav-dropdown-background-color: #ffffff; /* Used as the background color for dropdown items that appear when hovering over primary navigation items */
-  --nav-dropdown-color: #444444; /* Used for navigation links of the dropdown items in the navigation menu. */
+  --nav-mobile-background-color: #0a0a0a; /* Used as the background color for mobile navigation menu */
+  --nav-dropdown-background-color: #0a0a0a; /* Used as the background color for dropdown items that appear when hovering over primary navigation items */
+  --nav-dropdown-color: #cccccc; /* Used for navigation links of the dropdown items in the navigation menu. */
   --nav-dropdown-hover-color: #ffbb27; /* Similar to --nav-hover-color, this color is applied to dropdown navigation links when they are hovered over. */
 }
 
 /* Color Presets - These classes override global colors when applied to any section or element, providing reuse of the sam color scheme. */
 
 .light-background {
-  --background-color: #f9f9f9;
-  --surface-color: #ffffff;
+  --background-color: #090909;
+  --surface-color: #111111;
 }
 
 .dark-background {
-  --background-color: #060606;
+  --background-color: #000000;
   --default-color: #ffffff;
   --heading-color: #ffffff;
-  --surface-color: #252525;
+  --surface-color: #111111;
   --contrast-color: #ffffff;
 }
 
@@ -306,6 +306,14 @@ h6 {
 .scrolled .header {
   box-shadow: 0px 0 18px rgba(0, 0, 0, 0.1);
   padding: 12px 0;
+}
+
+/* Centered nav — desktop keeps links centered, mobile puts hamburger on the right */
+@media (max-width: 1199px) {
+  .header > div {
+    justify-content: flex-end !important;
+    padding-right: 12px;
+  }
 }
 
 /* Global Header on Scroll
@@ -2076,103 +2084,153 @@ section,
 
 
 
-/* new skills */
-.skill-box-modern {
-    padding: 30px;
-    background: #fff;
-    box-shadow: 0 0 20px rgba(0,0,0,0.1);
-    height: 100%;
-    border-radius: 10px;
-    transition: 0.3s;
-}
-.skill-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-top: 15px;
-}
-.skill-tags span {
-    background: #f0f4f8;
-    color: #0563af;
-    padding: 4px 12px;
-    border-radius: 50px;
-    font-size: 13px;
-    font-weight: 600;
-}
-.icon-box i {
-    font-size: 32px;
-    color: #0563af;
-    margin-bottom: 15px;
-    display: inline-block;
-}
-/* new skills */
-/* Glassmorphism Card Style */
+/*--------------------------------------------------------------
+# Skills Cards — Dark + Animated Dot Grid
+--------------------------------------------------------------*/
+
+/* Per-card accent colors via nth-child */
+.row > .col-lg-4:nth-child(1) .skill-card { --cc: 74,144,226; }   /* blue */
+.row > .col-lg-4:nth-child(2) .skill-card { --cc: 46,204,113; }   /* green */
+.row > .col-lg-4:nth-child(3) .skill-card { --cc: 155,89,182; }   /* purple */
+.row > .col-lg-4:nth-child(4) .skill-card { --cc: 243,156,18; }   /* amber */
+.row > .col-lg-4:nth-child(5) .skill-card { --cc: 231,76,60; }    /* red */
+.row > .col-lg-4:nth-child(6) .skill-card { --cc: 26,188,156; }   /* teal */
+
 .skill-card {
-  padding: 40px 25px;
-  background: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  --cc: 74,144,226;
+  position: relative;
+  overflow: hidden;
+  padding: 36px 28px 32px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.07);
   border-radius: 20px;
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
   height: 100%;
   text-align: left;
+  cursor: default;
+}
+
+/* Animated dot grid */
+.skill-card::before {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  background-image: radial-gradient(circle, rgba(var(--cc), 0.28) 1.2px, transparent 1.2px);
+  background-size: 20px 20px;
+  opacity: 0.35;
+  animation: dotShift 6s linear infinite;
+  pointer-events: none;
+  z-index: 0;
+  transition: opacity 0.4s;
+}
+
+/* Glowing top-edge accent line */
+.skill-card::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 10%; right: 10%;
+  height: 1.5px;
+  background: linear-gradient(90deg, transparent, rgba(var(--cc),0.9), transparent);
+  border-radius: 0 0 4px 4px;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.45s ease;
+  z-index: 1;
+}
+
+@keyframes dotShift {
+  0%   { background-position: 0 0; }
+  100% { background-position: 20px 20px; }
 }
 
 .skill-card:hover {
-  transform: translateY(-12px);
-  background: #ffffff;
-  box-shadow: 0 15px 45px rgba(5, 99, 175, 0.12);
+  transform: translateY(-10px);
+  background: rgba(var(--cc), 0.06);
+  border-color: rgba(var(--cc), 0.22);
+  box-shadow:
+    0 0 0 1px rgba(var(--cc), 0.12),
+    0 12px 40px rgba(0,0,0,0.5),
+    0 0 60px rgba(var(--cc), 0.10);
 }
 
-/* Icon Animation */
+.skill-card:hover::before { opacity: 0.65; }
+.skill-card:hover::after  { transform: scaleX(1); }
+
+/* All direct children above dot grid */
+.skill-card > * { position: relative; z-index: 1; }
+
+/* Icon */
 .icon-circle {
-  width: 60px;
-  height: 60px;
-  background: #f0f7ff;
-  border-radius: 12px;
+  width: 54px;
+  height: 54px;
+  border-radius: 14px;
+  background: rgba(var(--cc), 0.10);
+  border: 1px solid rgba(var(--cc), 0.22);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #0563af;
-  font-size: 28px;
-  margin-bottom: 20px;
-  transition: 0.5s;
+  color: rgb(var(--cc));
+  font-size: 22px;
+  margin-bottom: 22px;
+  transition: 0.4s cubic-bezier(0.23,1,0.32,1);
 }
 
 .skill-card:hover .icon-circle {
-  background: #0563af;
+  background: rgba(var(--cc), 0.22);
+  border-color: rgba(var(--cc), 0.5);
   color: #fff;
-  transform: scale(1.1) rotate(10deg);
+  box-shadow: 0 0 18px rgba(var(--cc), 0.45);
+  transform: scale(1.1) rotate(6deg);
 }
 
-/* Modern Tag Design */
+/* Heading & body text */
+.skill-card h3 {
+  color: #e4e4e4;
+  font-size: 1.08rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  letter-spacing: 0.2px;
+}
+
+.skill-card p {
+  color: rgba(255,255,255,0.38);
+  font-size: 0.83rem;
+  line-height: 1.7;
+  margin-bottom: 0;
+}
+
+/* Tags */
 .skill-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 15px;
+  gap: 7px;
+  margin-top: 18px;
 }
 
 .tag {
-  background: #f1f4f9;
-  color: #555;
-  padding: 5px 14px;
+  background: rgba(255,255,255,0.04);
+  color: rgba(255,255,255,0.45);
+  padding: 4px 12px;
   border-radius: 50px;
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 600;
-  border: 1px solid transparent;
-  transition: 0.3s ease;
+  border: 1px solid rgba(255,255,255,0.07);
+  transition: all 0.25s ease;
+  letter-spacing: 0.3px;
+  user-select: none;
 }
 
 .skill-card:hover .tag {
-  background: #e1e9f5;
-  color: #0563af;
+  background: rgba(var(--cc), 0.10);
+  color: rgb(var(--cc));
+  border-color: rgba(var(--cc), 0.25);
 }
 
 .tag:hover {
-  border-color: #0563af;
-  transform: scale(1.05);
+  background: rgba(var(--cc), 0.22) !important;
+  color: #fff !important;
+  border-color: rgba(var(--cc), 0.55) !important;
+  transform: scale(1.06);
 }
 
 /* projects */
@@ -2593,4 +2651,354 @@ input:-webkit-autofill {
 @media (max-width: 768px) {
     .hero-intro { font-size: 0.9rem; letter-spacing: 2px; }
     .hero-tagline { font-size: 1.2rem; }
+}
+
+/*--------------------------------------------------------------
+# Hero — Enhanced Animations
+--------------------------------------------------------------*/
+
+/* Animated gradient sweep on the hero name */
+.hero-name {
+  background: linear-gradient(
+    90deg,
+    #ffffff 0%,
+    #ffffff 40%,
+    #f39c12 50%,
+    #ffffff 60%,
+    #ffffff 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: nameSweep 4s linear infinite 1.5s;
+}
+
+/* But keep the accent span always orange */
+.hero-name .accent-color {
+  background: none;
+  -webkit-background-clip: unset;
+  -webkit-text-fill-color: #f39c12;
+  background-clip: unset;
+  color: #f39c12;
+  animation: none;
+}
+
+@keyframes nameSweep {
+  0%   { background-position: 200% center; }
+  100% { background-position: -200% center; }
+}
+
+/* Pulsing "Available" badge */
+.hero-badge-row {
+  margin-top: 4px;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 18px;
+  border-radius: 50px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.18);
+  backdrop-filter: blur(6px);
+  color: #e0f7ea;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  animation: badgeFadeIn 0.8s ease 2s both;
+}
+
+.badge-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #2ecc71;
+  box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.7);
+  animation: badgePulse 1.8s infinite;
+  flex-shrink: 0;
+}
+
+@keyframes badgePulse {
+  0%   { box-shadow: 0 0 0 0 rgba(46,204,113,0.7); }
+  70%  { box-shadow: 0 0 0 8px rgba(46,204,113,0); }
+  100% { box-shadow: 0 0 0 0 rgba(46,204,113,0); }
+}
+
+@keyframes badgeFadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Floating skill chips */
+.hero-chips {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 6px;
+  max-width: 520px;
+}
+
+.hero-chip {
+  padding: 5px 14px;
+  border-radius: 50px;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.15);
+  color: rgba(255,255,255,0.85);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  backdrop-filter: blur(4px);
+  opacity: 0;
+  animation: chipFloat 0.6s ease forwards;
+}
+
+.chip-1 { animation-delay: 2.2s; }
+.chip-2 { animation-delay: 2.4s; }
+.chip-3 { animation-delay: 2.6s; }
+.chip-4 { animation-delay: 2.8s; }
+.chip-5 { animation-delay: 3.0s; }
+.chip-6 { animation-delay: 3.2s; }
+
+@keyframes chipFloat {
+  from { opacity: 0; transform: translateY(12px) scale(0.9); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.hero-chip:hover {
+  background: rgba(243,156,18,0.25);
+  border-color: #f39c12;
+  color: #f39c12;
+  cursor: default;
+  transition: all 0.25s ease;
+}
+
+/* Hero background overlay — animated dark gradient */
+.hero::before {
+  background: linear-gradient(
+    135deg,
+    rgba(4,12,28,0.82) 0%,
+    rgba(5,30,60,0.75) 40%,
+    rgba(10,8,20,0.80) 100%
+  ) !important;
+  animation: heroOverlay 8s ease-in-out infinite alternate;
+}
+
+@keyframes heroOverlay {
+  0%   { opacity: 0.85; }
+  100% { opacity: 0.95; }
+}
+
+/* Glowing ring around particles area */
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 60%, rgba(5,99,175,0.15) 0%, transparent 65%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Glow on CTA buttons */
+.cta--blue  { box-shadow: 0 0 18px rgba(74,144,226,0.45), 0 6px 18px rgba(0,0,0,.25); }
+.cta--orange { box-shadow: 0 0 18px rgba(255,159,28,0.40), 0 6px 18px rgba(0,0,0,.25); }
+.cta--green  { box-shadow: 0 0 18px rgba(33,150,83,0.40),  0 6px 18px rgba(0,0,0,.25); }
+
+.cta-pill:hover {
+  filter: brightness(1.12);
+}
+
+@media (max-width: 600px) {
+  .hero-chips { max-width: 320px; }
+  .hero-chip  { font-size: 0.72rem; padding: 4px 11px; }
+}
+
+/*--------------------------------------------------------------
+# Stats / Counters Section
+--------------------------------------------------------------*/
+.stats-section {
+  padding: 60px 0;
+  background: linear-gradient(135deg, #060c1e 0%, #0a1628 50%, #06101c 100%) !important;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle animated grid background */
+.stats-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(5,99,175,0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(5,99,175,0.07) 1px, transparent 1px);
+  background-size: 40px 40px;
+  animation: gridScroll 20s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes gridScroll {
+  0%   { background-position: 0 0; }
+  100% { background-position: 40px 40px; }
+}
+
+.stat-card {
+  padding: 36px 20px;
+  border-radius: 16px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  backdrop-filter: blur(8px);
+  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.stat-card::before {
+  content: "";
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #f39c12, #0563af);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 0 40px rgba(243,156,18,0.15), 0 12px 36px rgba(0,0,0,0.4);
+  border-color: rgba(243,156,18,0.25);
+}
+
+.stat-card:hover::before {
+  transform: scaleX(1);
+}
+
+.stat-number {
+  font-size: clamp(2.4rem, 5vw, 3.4rem);
+  font-weight: 800;
+  line-height: 1;
+  margin-bottom: 10px;
+  font-family: var(--heading-font);
+  background: linear-gradient(135deg, #f39c12 0%, #5dade2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 0 12px rgba(243,156,18,0.35));
+}
+
+.stat-label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: rgba(255,255,255,0.5);
+}
+
+@media (max-width: 576px) {
+  .stat-card { padding: 26px 14px; }
+  .stat-number { font-size: 2rem; }
+}
+
+/*--------------------------------------------------------------
+# Cursor Glow Tracker
+--------------------------------------------------------------*/
+#cursor-glow {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  width: 380px;
+  height: 380px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(5,99,175,0.13) 0%, rgba(5,99,175,0.05) 40%, transparent 70%);
+  transform: translate(-50%, -50%);
+  left: -999px;
+  top: -999px;
+  transition: left 0.06s ease-out, top 0.06s ease-out;
+  mix-blend-mode: screen;
+  will-change: left, top;
+}
+
+@media (hover: none) {
+  #cursor-glow { display: none; }
+}
+
+/*--------------------------------------------------------------
+# Background Ambient Orb Animation
+--------------------------------------------------------------*/
+#bg-anim {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  will-change: transform;
+}
+
+.orb-1 {
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(circle, rgba(5,99,175,0.28) 0%, transparent 70%);
+  top: -250px;
+  left: -200px;
+  animation: orbDrift1 28s ease-in-out infinite;
+}
+
+.orb-2 {
+  width: 450px;
+  height: 450px;
+  background: radial-gradient(circle, rgba(243,156,18,0.18) 0%, transparent 70%);
+  top: 35%;
+  right: -180px;
+  animation: orbDrift2 22s ease-in-out infinite;
+}
+
+.orb-3 {
+  width: 550px;
+  height: 550px;
+  background: radial-gradient(circle, rgba(82,45,140,0.18) 0%, transparent 70%);
+  bottom: -220px;
+  left: 25%;
+  animation: orbDrift3 35s ease-in-out infinite;
+}
+
+.orb-4 {
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(46,204,113,0.10) 0%, transparent 70%);
+  top: 60%;
+  left: 5%;
+  animation: orbDrift2 18s ease-in-out infinite reverse;
+}
+
+@keyframes orbDrift1 {
+  0%,100% { transform: translate(0,0) scale(1); }
+  30%     { transform: translate(80px,-100px) scale(1.12); }
+  60%     { transform: translate(160px, 60px) scale(0.92); }
+  80%     { transform: translate(-20px, 90px) scale(1.06); }
+}
+
+@keyframes orbDrift2 {
+  0%,100% { transform: translate(0,0) scale(1); }
+  40%     { transform: translate(-90px, 70px) scale(1.15); }
+  70%     { transform: translate(-40px,-80px) scale(0.90); }
+}
+
+@keyframes orbDrift3 {
+  0%,100% { transform: translate(0,0) scale(1); }
+  25%     { transform: translate(50px,-60px) scale(1.08); }
+  55%     { transform: translate(-100px, 40px) scale(0.95); }
+  80%     { transform: translate(30px, 100px) scale(1.10); }
+}
+
+/* Hero is transparent so ambient orbs bleed through the dark overlay */
+#hero {
+  background-color: transparent !important;
 }

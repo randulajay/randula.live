@@ -249,6 +249,20 @@ document.addEventListener('DOMContentLoaded', function () {
 })();
 
 
+// cursor glow tracker
+(function() {
+  const glow = document.getElementById('cursor-glow');
+  if (!glow) return;
+  document.addEventListener('mousemove', function(e) {
+    glow.style.left = e.clientX + 'px';
+    glow.style.top  = e.clientY + 'px';
+  });
+  document.addEventListener('mouseleave', function() {
+    glow.style.left = '-999px';
+    glow.style.top  = '-999px';
+  });
+})();
+
 //down:
   document.querySelectorAll('a[href^="#"]').forEach(function (link) {
     link.addEventListener('click', function (e) {
@@ -325,4 +339,38 @@ document.getElementById('contact-form').addEventListener('submit', function(e) {
         btn.innerHTML = 'Send Message <i class="bi bi-send-fill ms-2"></i>';
         btn.disabled = false;
     });
+
+  /* Animated counters */
+  function runCounter(el) {
+    const target = +el.dataset.target;
+    const totalMs = 1800;
+    const tickMs = 30;
+    const steps = Math.round(totalMs / tickMs);
+    const increment = target / steps;
+    let current = 0;
+    let ticks = 0;
+    const timer = setInterval(() => {
+      ticks++;
+      current = Math.min(current + increment, target);
+      el.textContent = Math.round(current);
+      if (ticks >= steps) { el.textContent = target; clearInterval(timer); }
+    }, tickMs);
+  }
+
+  function checkCounters() {
+    document.querySelectorAll('.counter').forEach(el => {
+      if (el.dataset.started) return;            /* already running */
+      const rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight * 0.95) {
+        el.dataset.started = '1';
+        runCounter(el);
+      }
+    });
+  }
+
+  window.addEventListener('scroll', checkCounters, { passive: true });
+  /* Delayed fires so AOS has time to reveal the section */
+  window.addEventListener('load', () => {
+    [400, 900, 1600].forEach(ms => setTimeout(checkCounters, ms));
+  });
 });
