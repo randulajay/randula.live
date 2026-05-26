@@ -58,9 +58,10 @@
    */
   const preloader = document.querySelector('#preloader');
   if (preloader) {
-    window.addEventListener('load', () => {
-      preloader.remove();
-    });
+    // Remove on load OR after 1.2s max — whichever comes first
+    const removePreloader = () => preloader.remove();
+    window.addEventListener('load', removePreloader);
+    setTimeout(removePreloader, 1200);
   }
 
   /**
