@@ -48,128 +48,104 @@
     { t: 'GDPR', c: 'ops' }, { t: 'BizTalk', c: 'tool' }
   ];
 
-  // How many to show at once (scales with screen)
-  var pageH = document.documentElement.scrollHeight;
-  var screenH = window.innerHeight;
-  var totalSlots = Math.min(Math.round((pageH / screenH) * 12), 80);
-
+  var pageH = Math.max(document.documentElement.scrollHeight, window.innerHeight);
+  var totalSlots = 120;
   var els = [];
   var mouse = { x: -9999, y: -9999 };
+  var startTime = Date.now();
 
-  // Track mouse position (viewport coords)
   document.addEventListener('mousemove', function(e) {
     mouse.x = e.clientX;
     mouse.y = e.clientY;
   });
 
-  function randomBetween(a, b) { return a + Math.random() * (b - a); }
+  function rand(a, b) { return a + Math.random() * (b - a); }
 
-  function createFloater(index) {
-    var kw = keywords[index % keywords.length];
+  function createFloater(i) {
+    var kw = keywords[Math.floor(Math.random() * keywords.length)];
     var el = document.createElement('span');
     el.className = 'float-keyword';
     el.setAttribute('data-cat', kw.c);
     el.textContent = kw.t;
     container.appendChild(el);
 
-    // Distribute across full page height
-    var startY = randomBetween(0, pageH);
-    var startX = randomBetween(2, 96); // % from left
-
-    // Movement params
-    var speedX = randomBetween(-0.15, 0.15);
-    var speedY = randomBetween(-0.08, -0.25); // drift upward
-    var wobbleAmp = randomBetween(15, 40);
-    var wobbleSpeed = randomBetween(0.0008, 0.002);
+    var baseX = rand(2, 95);
+    // Spread initial Y across entire page height so we see them immediately
+    var startY = rand(0, pageH);
+    var speedY = rand(0.3, 0.8);  // px per frame upward
+    var wobbleAmp = rand(20, 60);
     var phase = Math.random() * Math.PI * 2;
-    var size = randomBetween(10, 14);
+    var delay = i * 50;  // stagger 50ms each
 
-    el.style.fontSize = size + 'px';
-    el.style.opacity = '0';
+    el.style.fontSize = rand(11, 14) + 'px';
 
-    return {
-      el: el,
-      x: startX,
-      y: startY,
-      baseX: startX,
-      speedX: speedX,
-      speedY: speedY,
-      wobbleAmp: wobbleAmp,
-      wobbleSpeed: wobbleSpeed,
-      phase: phase,
-      born: Date.now() + Math.random() * 3000 // stagger start
-    };
+    return { el, baseX, y: startY, speedY, wobbleAmp, phase, delay };
   }
 
-  // Create all floaters
+  // Shuffle keywords before creating
+  var shuffled = keywords.slice().sort(function() { return Math.random() - 0.5; });
   for (var i = 0; i < totalSlots; i++) {
-    els.push(createFloater(Math.floor(Math.random() * keywords.length)));
+    keywords.unshift(shuffled[i % shuffled.length]);
+    els.push(createFloater(i));
   }
 
-  // Shuffle keyword order so no grouping
-  els.sort(function() { return Math.random() - 0.5; });
+  var GLOW_DIST = 180;
 
-  var GLOW_DIST = 200; // px from mouse to glow
-
-  function animate() {
+  function tick() {
     var now = Date.now();
-    var scrollY = window.scrollY || window.pageYOffset;
+    var elapsed = now - startTime;
+    var scrollY = window.scrollY || 0;
     var vpTop = scrollY;
     var vpBottom = scrollY + window.innerHeight;
 
     for (var i = 0; i < els.length; i++) {
       var f = els[i];
-      if (now < f.born) continue;
 
-      var elapsed = (now - f.born) * 0.001;
+      // Respect stagger delay
+      if (elapsed < f.delay) continue;
 
-      // Update position
-      f.y += f.speedY;
-      var wobble = Math.sin(elapsed * f.wobbleSpeed * 1000 + f.phase) * f.wobbleAmp;
-      var currentX = f.baseX + wobble * 0.1; // subtle horizontal wobble
+      // Move upward
+      f.y -= f.speedY;
 
-      // Wrap vertically — if drifted off top, reset to bottom
-      if (f.y < -50) {
-        f.y = pageH + 50;
-        f.baseX = randomBetween(2, 96);
+      // Wrap: when off top, reset to bottom of page
+      if (f.y < -30) {
+        f.y = pageH + 30;
+        f.baseX = rand(2, 95);
       }
 
-      // Only render if near viewport (performance)
-      var inView = f.y > vpTop - 200 && f.y < vpBottom + 200;
+      // Only update DOM if near viewport
+      var inView = f.y >= vpTop - 150 && f.y <= vpBottom + 150;
 
       if (inView) {
-        f.el.style.left = currentX + '%';
-        f.el.style.top = f.y + 'px';
-        f.el.style.opacity = '1';
-        f.el.style.transform = 'translateY(' + (Math.sin(elapsed * 0.5 + f.phase) * 8) + 'px) rotate(' + (Math.sin(elapsed * 0.3 + f.phase) * 3) + 'deg)';
+        var t = elapsed * 0.001;
+        var wobbleX = Math.sin(t * 0.4 + f.phase) * (f.wobbleAmp * 0.12);
+        var wobbleY = Math.sin(t * 0.6 + f.phase) * 6;
+        var rot = Math.sin(t * 0.25 + f.phase) * 2;
+        var currentX = Math.min(Math.max(f.baseX + wobbleX, 1), 94);
 
-        // Mouse glow proximity (viewport coords)
+        f.el.style.left = currentX + '%';
+        f.el.style.top = (f.y - scrollY) + 'px';
+        f.el.style.transform = 'translateY(' + wobbleY + 'px) rotate(' + rot + 'deg)';
+        f.el.style.opacity = '1';
+
+        // Glow on mouse proximity
         var rect = f.el.getBoundingClientRect();
         var cx = rect.left + rect.width / 2;
         var cy = rect.top + rect.height / 2;
-        var dx = mouse.x - cx;
-        var dy = mouse.y - cy;
-        var dist = Math.sqrt(dx * dx + dy * dy);
-
-        if (dist < GLOW_DIST) {
-          f.el.classList.add('glow');
-        } else {
-          f.el.classList.remove('glow');
-        }
+        var dist = Math.sqrt((mouse.x - cx) ** 2 + (mouse.y - cy) ** 2);
+        dist < GLOW_DIST ? f.el.classList.add('glow') : f.el.classList.remove('glow');
       } else {
         f.el.style.opacity = '0';
       }
     }
 
-    requestAnimationFrame(animate);
+    requestAnimationFrame(tick);
   }
 
-  // Start after page settles
-  setTimeout(animate, 500);
+  requestAnimationFrame(tick);
 
-  // Recalculate on resize
   window.addEventListener('resize', function() {
-    pageH = document.documentElement.scrollHeight;
+    pageH = Math.max(document.documentElement.scrollHeight, window.innerHeight);
   });
 })();
 
