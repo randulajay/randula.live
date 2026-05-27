@@ -1,7 +1,177 @@
 /*==============================================================
   ANIMATION INTEGRATIONS
-  GSAP · Three.js · Lottie · Anime.js
+  Floating Keywords · GSAP · Three.js · Lottie · Anime.js
 ==============================================================*/
+
+/*--------------------------------------------------------------
+  0. FLOATING KEYWORDS — Drifting skill tags across the page
+--------------------------------------------------------------*/
+(function() {
+  var container = document.getElementById('floating-keywords');
+  if (!container) return;
+
+  var keywords = [
+    // Programming & Automation
+    { t: 'Python', c: 'lang' }, { t: 'pandas', c: 'lang' }, { t: 'NumPy', c: 'lang' },
+    { t: 'scikit-learn', c: 'lang' }, { t: 'Automation', c: 'lang' }, { t: 'Log Parsing', c: 'lang' },
+    { t: 'Health Checks', c: 'lang' }, { t: 'Bash', c: 'lang' }, { t: 'Shell Scripting', c: 'lang' },
+    { t: 'CRON', c: 'lang' }, { t: 'REST API', c: 'lang' }, { t: 'R', c: 'lang' },
+    { t: 'ggplot2', c: 'lang' }, { t: 'Shiny', c: 'lang' },
+    // Tools & Platforms
+    { t: 'ServiceNow', c: 'tool' }, { t: 'Remedy', c: 'tool' }, { t: 'Siebel', c: 'tool' },
+    { t: 'Active Directory', c: 'tool' }, { t: 'Confluence', c: 'tool' }, { t: 'SharePoint', c: 'tool' },
+    { t: 'Microsoft Teams', c: 'tool' },
+    // Databases & Reporting
+    { t: 'SQL Server', c: 'db' }, { t: 'PostgreSQL', c: 'db' }, { t: 'Oracle', c: 'db' },
+    { t: 'MySQL', c: 'db' }, { t: 'Snowflake', c: 'db' }, { t: 'Excel', c: 'db' },
+    { t: 'Power BI', c: 'db' }, { t: 'Tableau', c: 'db' },
+    // OS & Version Control
+    { t: 'Linux', c: 'sys' }, { t: 'Windows', c: 'sys' }, { t: 'Git', c: 'sys' },
+    // Web Development
+    { t: 'HTML', c: 'web' }, { t: 'CSS', c: 'web' }, { t: 'JavaScript', c: 'web' },
+    { t: 'Responsive Design', c: 'web' }, { t: 'React', c: 'web' }, { t: 'Bootstrap', c: 'web' },
+    // Support & Systems
+    { t: 'L2 Support', c: 'ops' }, { t: 'L3 Support', c: 'ops' },
+    { t: 'Incident Management', c: 'ops' }, { t: 'Problem Management', c: 'ops' },
+    { t: 'Change Management', c: 'ops' }, { t: 'Release Support', c: 'ops' },
+    { t: 'SLA Management', c: 'ops' }, { t: 'MTTR Reduction', c: 'ops' },
+    { t: 'RCA', c: 'ops' }, { t: 'Knowledge Base', c: 'ops' },
+    { t: 'Monitoring', c: 'ops' }, { t: 'Production Support', c: 'ops' },
+    { t: 'On-Call Support', c: 'ops' }, { t: 'Escalation Handling', c: 'ops' },
+    { t: '24x7 Operations', c: 'ops' }, { t: 'ITIL', c: 'ops' },
+    // Extra
+    { t: 'Docker', c: 'sys' }, { t: 'Kubernetes', c: 'sys' },
+    { t: 'AWS', c: 'sys' }, { t: 'Azure', c: 'sys' },
+    { t: 'PySpark', c: 'lang' }, { t: 'Matplotlib', c: 'lang' },
+    { t: 'VBA', c: 'lang' }, { t: 'Apache Tomcat', c: 'sys' },
+    { t: 'Data Pipelines', c: 'db' }, { t: 'ETL', c: 'db' },
+    { t: 'GDPR', c: 'ops' }, { t: 'BizTalk', c: 'tool' }
+  ];
+
+  // How many to show at once (scales with screen)
+  var pageH = document.documentElement.scrollHeight;
+  var screenH = window.innerHeight;
+  var totalSlots = Math.min(Math.round((pageH / screenH) * 12), 80);
+
+  var els = [];
+  var mouse = { x: -9999, y: -9999 };
+
+  // Track mouse position (viewport coords)
+  document.addEventListener('mousemove', function(e) {
+    mouse.x = e.clientX;
+    mouse.y = e.clientY;
+  });
+
+  function randomBetween(a, b) { return a + Math.random() * (b - a); }
+
+  function createFloater(index) {
+    var kw = keywords[index % keywords.length];
+    var el = document.createElement('span');
+    el.className = 'float-keyword';
+    el.setAttribute('data-cat', kw.c);
+    el.textContent = kw.t;
+    container.appendChild(el);
+
+    // Distribute across full page height
+    var startY = randomBetween(0, pageH);
+    var startX = randomBetween(2, 96); // % from left
+
+    // Movement params
+    var speedX = randomBetween(-0.15, 0.15);
+    var speedY = randomBetween(-0.08, -0.25); // drift upward
+    var wobbleAmp = randomBetween(15, 40);
+    var wobbleSpeed = randomBetween(0.0008, 0.002);
+    var phase = Math.random() * Math.PI * 2;
+    var size = randomBetween(10, 14);
+
+    el.style.fontSize = size + 'px';
+    el.style.opacity = '0';
+
+    return {
+      el: el,
+      x: startX,
+      y: startY,
+      baseX: startX,
+      speedX: speedX,
+      speedY: speedY,
+      wobbleAmp: wobbleAmp,
+      wobbleSpeed: wobbleSpeed,
+      phase: phase,
+      born: Date.now() + Math.random() * 3000 // stagger start
+    };
+  }
+
+  // Create all floaters
+  for (var i = 0; i < totalSlots; i++) {
+    els.push(createFloater(Math.floor(Math.random() * keywords.length)));
+  }
+
+  // Shuffle keyword order so no grouping
+  els.sort(function() { return Math.random() - 0.5; });
+
+  var GLOW_DIST = 200; // px from mouse to glow
+
+  function animate() {
+    var now = Date.now();
+    var scrollY = window.scrollY || window.pageYOffset;
+    var vpTop = scrollY;
+    var vpBottom = scrollY + window.innerHeight;
+
+    for (var i = 0; i < els.length; i++) {
+      var f = els[i];
+      if (now < f.born) continue;
+
+      var elapsed = (now - f.born) * 0.001;
+
+      // Update position
+      f.y += f.speedY;
+      var wobble = Math.sin(elapsed * f.wobbleSpeed * 1000 + f.phase) * f.wobbleAmp;
+      var currentX = f.baseX + wobble * 0.1; // subtle horizontal wobble
+
+      // Wrap vertically — if drifted off top, reset to bottom
+      if (f.y < -50) {
+        f.y = pageH + 50;
+        f.baseX = randomBetween(2, 96);
+      }
+
+      // Only render if near viewport (performance)
+      var inView = f.y > vpTop - 200 && f.y < vpBottom + 200;
+
+      if (inView) {
+        f.el.style.left = currentX + '%';
+        f.el.style.top = f.y + 'px';
+        f.el.style.opacity = '1';
+        f.el.style.transform = 'translateY(' + (Math.sin(elapsed * 0.5 + f.phase) * 8) + 'px) rotate(' + (Math.sin(elapsed * 0.3 + f.phase) * 3) + 'deg)';
+
+        // Mouse glow proximity (viewport coords)
+        var rect = f.el.getBoundingClientRect();
+        var cx = rect.left + rect.width / 2;
+        var cy = rect.top + rect.height / 2;
+        var dx = mouse.x - cx;
+        var dy = mouse.y - cy;
+        var dist = Math.sqrt(dx * dx + dy * dy);
+
+        if (dist < GLOW_DIST) {
+          f.el.classList.add('glow');
+        } else {
+          f.el.classList.remove('glow');
+        }
+      } else {
+        f.el.style.opacity = '0';
+      }
+    }
+
+    requestAnimationFrame(animate);
+  }
+
+  // Start after page settles
+  setTimeout(animate, 500);
+
+  // Recalculate on resize
+  window.addEventListener('resize', function() {
+    pageH = document.documentElement.scrollHeight;
+  });
+})();
 
 /*--------------------------------------------------------------
   1. GSAP + ScrollTrigger — Scroll-driven animations
