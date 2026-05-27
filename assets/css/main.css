@@ -409,6 +409,23 @@ section, .section {
   z-index: 3;
 }
 
+/* ── Three.js Globe ── */
+#three-globe {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 700px;
+  height: 700px;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.25;
+}
+
+@media (max-width: 768px) {
+  #three-globe { width: 400px; height: 400px; opacity: 0.15; }
+}
+
 /* ── Hero Canvas (dense particle network) ── */
 #hero-canvas {
   position: absolute;

@@ -109,6 +109,7 @@
   <main class="main">
     <section id="hero" class="hero section dark-background">
     <!-- Hero animated background layers -->
+    <div id="three-globe" aria-hidden="true"></div>
     <canvas id="hero-canvas" aria-hidden="true"></canvas>
     <div class="hero-grid" aria-hidden="true"></div>
     <div class="hero-glow hero-glow-1" aria-hidden="true"></div>
@@ -931,19 +932,33 @@
 
   <!-- Vendor JS Files -->
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <!-- <script src="assets/vendor/php-email-form/validate.js"></script> -->
   <script src="assets/vendor/aos/aos.js"></script>
-  <!-- <script src="assets/vendor/swiper/swiper-bundle.min.js"></script> -->
   <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
   <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
   <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <!-- dots -->
-  <!-- <script src="https://cdn.jsdelivr.net/gh/jnicol/particleground/jquery.particleground.min.js"></script> -->
   <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
+  <!-- Animation Libraries -->
+  <!-- GSAP + ScrollTrigger + SplitText (free tier) -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js"></script>
+
+  <!-- Three.js (3D engine) -->
+  <script src="https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.min.js"></script>
+
+  <!-- Lottie Player (animated icons) -->
+  <script src="https://cdn.jsdelivr.net/npm/lottie-web@5.12.2/build/player/lottie.min.js"></script>
+
+  <!-- Anime.js (lightweight animation) -->
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.2/lib/anime.min.js"></script>
+
   <script>AOS.init({ duration: 1000, once: true });</script>
+
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
+
+  <!-- Animation Integrations -->
+  <script src="assets/js/animations.js"></script>
 
 </body>
 
