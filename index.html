@@ -108,9 +108,21 @@
   </header>
   <main class="main">
     <section id="hero" class="hero section dark-background">
-    <div id="particles"></div>
+    <!-- Hero animated background layers -->
+    <canvas id="hero-canvas" aria-hidden="true"></canvas>
+    <div class="hero-grid" aria-hidden="true"></div>
+    <div class="hero-glow hero-glow-1" aria-hidden="true"></div>
+    <div class="hero-glow hero-glow-2" aria-hidden="true"></div>
+    <div class="hero-lines" aria-hidden="true">
+      <div class="h-line h-line-1"></div>
+      <div class="h-line h-line-2"></div>
+      <div class="h-line h-line-3"></div>
+      <div class="v-line v-line-1"></div>
+      <div class="v-line v-line-2"></div>
+      <div class="v-line v-line-3"></div>
+    </div>
 
-    <div class="container d-flex flex-column align-items-center justify-content-center text-center hero-container" data-aos="fade-up" data-aos-delay="200" role="banner">
+    <div class="container d-flex flex-column align-items-center justify-content-center text-center hero-container" role="banner">
       <p class="hero-intro">Hello, I am</p>
   
   <h1 class="hero-name">Randula <span class="accent-color">Jayarathna</span></h1>

@@ -232,21 +232,6 @@ const isSuccess = true; // Change this to false to simulate an error
 // }, 2000);
 
 
-// dots
-document.addEventListener('DOMContentLoaded', function () {
-  particleground(document.getElementById('particles'), {
-    dotColor: '#5cbdaa',
-    lineColor: '#5cbdaa',
-    particleRadius: 5,
-    proximity: 120,
-    density: 9000,
-    
-  });
-
-  var intro = document.getElementById('intro');
-  intro.style.marginTop = -intro.offsetHeight / 2 + 'px';
-});
-
 })();
 
 
@@ -527,6 +512,143 @@ document.getElementById('contact-form').addEventListener('submit', function(e) {
 
   // Start after a short delay so hero loads first
   setTimeout(animate, 300);
+})();
+
+/*==============================================================
+  HERO CANVAS — Dense Interactive Network
+==============================================================*/
+(function() {
+  var canvas = document.getElementById('hero-canvas');
+  if (!canvas) return;
+  var ctx = canvas.getContext('2d');
+  var hero = canvas.parentElement;
+  var pts = [];
+  var mouse = { x: -9999, y: -9999 };
+  var LINK = 160, MOUSE_R = 250;
+
+  function resize() {
+    canvas.width = hero.offsetWidth;
+    canvas.height = hero.offsetHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  hero.addEventListener('mousemove', function(e) {
+    var r = hero.getBoundingClientRect();
+    mouse.x = e.clientX - r.left;
+    mouse.y = e.clientY - r.top;
+  });
+  hero.addEventListener('mouseleave', function() {
+    mouse.x = -9999; mouse.y = -9999;
+  });
+
+  function count() {
+    var a = canvas.width * canvas.height;
+    return Math.min(Math.max(Math.round(a / 5500), 80), 260);
+  }
+
+  function make() {
+    var roll = Math.random();
+    var r, g, b;
+    if (roll < 0.45) { r=99; g=102; b=241; }         // indigo
+    else if (roll < 0.7) { r=139; g=92; b=246; }      // violet
+    else if (roll < 0.85) { r=59; g=130; b=246; }     // blue
+    else if (roll < 0.93) { r=245; g=158; b=11; }     // amber
+    else { r=g=b= 220 + Math.random()*35|0; }         // white
+    return {
+      x: Math.random()*canvas.width,
+      y: Math.random()*canvas.height,
+      vx: (Math.random()-0.5)*0.6,
+      vy: (Math.random()-0.5)*0.6,
+      rad: 1.2 + Math.random()*2.2,
+      r:r, g:g, b:b,
+      a: 0.4 + Math.random()*0.5
+    };
+  }
+
+  function init() {
+    pts = [];
+    var n = count();
+    for (var i = 0; i < n; i++) pts.push(make());
+  }
+  init();
+  window.addEventListener('resize', function() {
+    var n = count();
+    while (pts.length < n) pts.push(make());
+    while (pts.length > n) pts.pop();
+  });
+
+  function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    var w = canvas.width, h = canvas.height, n = pts.length;
+
+    for (var i = 0; i < n; i++) {
+      var p = pts[i];
+      p.x += p.vx; p.y += p.vy;
+      if (p.x < -10) p.x = w+10;
+      if (p.x > w+10) p.x = -10;
+      if (p.y < -10) p.y = h+10;
+      if (p.y > h+10) p.y = -10;
+    }
+
+    // Connections
+    for (var i = 0; i < n; i++) {
+      var a = pts[i];
+      for (var j = i+1; j < n; j++) {
+        var b = pts[j];
+        var dx = a.x-b.x, dy = a.y-b.y;
+        var d2 = dx*dx + dy*dy;
+        if (d2 < LINK*LINK) {
+          var alpha = (1 - Math.sqrt(d2)/LINK) * 0.25;
+          ctx.strokeStyle = 'rgba(99,102,241,' + alpha + ')';
+          ctx.lineWidth = 0.7;
+          ctx.beginPath();
+          ctx.moveTo(a.x, a.y);
+          ctx.lineTo(b.x, b.y);
+          ctx.stroke();
+        }
+      }
+
+      // Mouse attraction lines
+      var mx = a.x-mouse.x, my = a.y-mouse.y;
+      var md = mx*mx + my*my;
+      if (md < MOUSE_R*MOUSE_R) {
+        var ma = (1 - Math.sqrt(md)/MOUSE_R) * 0.55;
+        ctx.strokeStyle = 'rgba(139,92,246,' + ma + ')';
+        ctx.lineWidth = 1.5;
+        ctx.beginPath();
+        ctx.moveTo(a.x, a.y);
+        ctx.lineTo(mouse.x, mouse.y);
+        ctx.stroke();
+
+        // Glow dot at mouse intersection
+        if (md < 80*80) {
+          ctx.beginPath();
+          ctx.arc(a.x, a.y, a.rad*1.8, 0, Math.PI*2);
+          ctx.fillStyle = 'rgba(139,92,246,' + ma*0.6 + ')';
+          ctx.fill();
+        }
+      }
+    }
+
+    // Draw particles with glow
+    for (var i = 0; i < n; i++) {
+      var p = pts[i];
+      // Outer glow
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.rad*3, 0, Math.PI*2);
+      ctx.fillStyle = 'rgba('+p.r+','+p.g+','+p.b+','+(p.a*0.1)+')';
+      ctx.fill();
+      // Core
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.rad, 0, Math.PI*2);
+      ctx.fillStyle = 'rgba('+p.r+','+p.g+','+p.b+','+p.a+')';
+      ctx.fill();
+    }
+
+    requestAnimationFrame(draw);
+  }
+  setTimeout(draw, 200);
 })();
 
 /*==============================================================
