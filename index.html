@@ -73,6 +73,12 @@
 
 <body class="index-page">
 
+  <!-- Scroll progress bar -->
+  <div id="scroll-progress" aria-hidden="true"></div>
+
+  <!-- Full-page particle canvas -->
+  <canvas id="particles-bg" aria-hidden="true"></canvas>
+
   <!-- Ambient background orbs -->
   <div id="bg-anim" aria-hidden="true">
     <div class="orb orb-1"></div>
@@ -382,7 +388,7 @@
         <div class="row">
           <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
             <h3 class="resume-title">Education</h3>
-            <div class="resume-item">
+            <div class="resume-item reveal-up">
               <h4>MSc in Data Science</h4>
               <h5>Sep 2022 - Aug 2024</h5>
               <p><em>University of Gloucestershire, United Kingdom</em></p>
@@ -402,7 +408,7 @@
                 </li>
               </ul>
             </div>
-           <div class="resume-item">
+           <div class="resume-item reveal-up">
               <h4>BSc (Hons) in Software Engineering</h4>
               <h5>Oct 2016 - Dec 2019</h5>
               <p><em>University of Plymouth, United Kingdom</em></p>
@@ -425,12 +431,12 @@
                 </li>
               </ul>
             </div><!-- Edn Resume Item -->
-            <div class="resume-item">
+            <div class="resume-item reveal-up">
               <h4>Certificate in Computer Science</h4>
               <h5>Oct 2015 - Feb 2016</h5>
               <p><em>National Institute of Business Management</em></p>   
             </div>
-            <div class="resume-item">
+            <div class="resume-item reveal-up">
               <h4>GCE Ordinary Level(O/L)</h4>
               <h5>2012</h5>
             </div><!-- Edn Resume Item -->
@@ -454,7 +460,7 @@
            <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
               <h3 class="resume-title">Professional Experience</h3>
 
-              <div class="resume-item">
+              <div class="resume-item reveal-up">
                 <h4>Data Analyst</h4>
                 <h5>Feb 2025 – Apr 2026</h5>
                 <p><em>Vesaw Infotech – London, United Kingdom</em></p>
@@ -474,7 +480,7 @@
                 </ul>
               </div><!-- End Resume Item -->
 
-              <div class="resume-item">
+              <div class="resume-item reveal-up">
                 <h4>Operations Engineer (L2/L3 Application Support)</h4>
                 <h5>Oct 2020 – Sep 2022</h5>
                 <p><em>Virtusa – Colombo, Sri Lanka</em></p>
@@ -497,7 +503,7 @@
                 </ul>
               </div><!-- End Resume Item -->
 
-              <div class="resume-item">
+              <div class="resume-item reveal-up">
                 <h4>Associate Operations Engineer</h4>
                 <h5>Mar 2020 – Oct 2020</h5>
                 <p><em>Virtusa – Colombo, Sri Lanka</em></p>
@@ -514,7 +520,7 @@
                 </ul>
               </div><!-- End Resume Item -->
 
-              <div class="resume-item">
+              <div class="resume-item reveal-up">
                 <h4>Trainee Software Engineer</h4>
                 <h5>Dec 2019 – Feb 2020</h5>
                 <p><em>Co-operative Insurance Company Limited – Colombo, Sri Lanka</em></p>
@@ -528,13 +534,13 @@
             <!-- career development -->
              <h3 class="resume-title">Career Development & Leadership Experience</h3>
               <p><em>(Undertaken alongside MSc studies, UK 2022–2025)</em></p>
-              <div class="resume-item">
+              <div class="resume-item reveal-up">
                 <h4>Store Supervisor</h4>
                 <h5>Nov 2024 – Jan 2025</h5>
                 <p><em>Starbucks – Cheltenham, UK</em></p>
               </div>
 
-              <div class="resume-item">
+              <div class="resume-item reveal-up">
                 <h4>Shift Manager</h4>
                 <h5>Sep 2023 – Nov 2024</h5>
                 <p><em>Taco Bell – Cheltenham, UK</em></p>
@@ -543,7 +549,7 @@
                   <li>Monitored daily sales and labour metrics to adjust operational strategy in real time.</li>
                 </ul>
               </div>
-              <div class="resume-item">
+              <div class="resume-item reveal-up">
                 <h4>Supervisor</h4>
                 <h5>Apr 2023 – Sep 2023</h5>
                 <p><em>The Range – Cheltenham, UK</em></p>
@@ -714,28 +720,28 @@
 
           <div class="col-lg-3 col-md-6 journey-col">
             <div class="journey-info">2019: BSc Graduation</div>
-            <div class="journey-item">
+            <div class="journey-item reveal-scale">
               <img src="assets/img/galary/1.jpeg" alt="BSc Graduation" class="img-fluid">
             </div>
           </div>
 
           <div class="col-lg-3 col-md-6 journey-col">
             <div class="journey-info">2020: Virtusa Engineer</div>
-            <div class="journey-item">
+            <div class="journey-item reveal-scale">
               <img src="assets/img/galary/2.jpeg" alt="Virtusa" class="img-fluid">
             </div>
           </div>
 
           <div class="col-lg-3 col-md-6 journey-col">
             <div class="journey-info">2022: UK Relocation & MSc</div>
-            <div class="journey-item">
+            <div class="journey-item reveal-scale">
               <img src="assets/img/galary/3.jpeg" alt="UK Arrival" class="img-fluid">
             </div>
           </div>
 
           <div class="col-lg-3 col-md-6 journey-col">
             <div class="journey-info">2024: MSc Graduation</div>
-            <div class="journey-item">
+            <div class="journey-item reveal-scale">
               <img src="assets/img/galary/4.jpg" alt="MSc Graduation" class="img-fluid">
             </div>
           </div>
@@ -801,7 +807,7 @@
 
     <!-- Contact Section -->
      
-<section id="contact" class="contact section" style="background-color: #ffffff;">
+<section id="contact" class="contact section">
   <div class="container section-title" data-aos="fade-up">
     <span class="description-title">Contact</span>
     <h2>Let's Connect!</h2>
@@ -814,7 +820,7 @@
       <div class="col-lg-10">
         <div class="row g-4 text-center">
           <div class="col-md-4">
-            <div class="contact-card">
+            <div class="contact-card reveal-up">
               <div class="icon-box"><i class="bi bi-geo-alt"></i></div>
               <h3>Address</h3>
               <p><a>London, United Kingdom</a></p>
@@ -823,7 +829,7 @@
           </div>
 
           <div class="col-md-4">
-            <div class="contact-card">
+            <div class="contact-card reveal-up">
               <div class="icon-box"><i class="bi bi-telephone"></i></div>
               <h3>Call Me SL</h3>
               <p><a href="tel:+94760736498" class="contact-link"> +94 76 073 6498 (Sri Lanka)</a></p>
@@ -832,7 +838,7 @@
           </div>
           
           <div class="col-md-4">
-            <div class="contact-card">
+            <div class="contact-card reveal-up">
               <div class="icon-box"><i class="bi bi-envelope"></i></div>
               <h3>Email Me</h3>
               <p><a href="mailto:randulajayarathna@gmail.com" class="contact-link">randulajayarathna@gmail.com</a></p>

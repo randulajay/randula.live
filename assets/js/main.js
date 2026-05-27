@@ -375,3 +375,224 @@ document.getElementById('contact-form').addEventListener('submit', function(e) {
     [400, 900, 1600].forEach(ms => setTimeout(checkCounters, ms));
   });
 });
+
+/*==============================================================
+  FULL-PAGE PARTICLE NETWORK ANIMATION
+==============================================================*/
+(function() {
+  var canvas = document.getElementById('particles-bg');
+  if (!canvas) return;
+  var ctx = canvas.getContext('2d');
+
+  var particles = [];
+  var mouse = { x: -9999, y: -9999 };
+  var CONNECT_DIST = 180;
+  var MOUSE_DIST = 220;
+  var BASE_COUNT = 120;
+
+  function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  document.addEventListener('mousemove', function(e) {
+    mouse.x = e.clientX;
+    mouse.y = e.clientY;
+  });
+  document.addEventListener('mouseleave', function() {
+    mouse.x = -9999;
+    mouse.y = -9999;
+  });
+
+  // Particle count scales with screen area
+  function getCount() {
+    var area = window.innerWidth * window.innerHeight;
+    return Math.min(Math.max(Math.round(area / 8000), 60), 200);
+  }
+
+  function createParticle() {
+    // 70% blue-ish, 20% amber, 10% white
+    var roll = Math.random();
+    var r, g, b;
+    if (roll < 0.5) {
+      // indigo/blue — matches new accent
+      r = 80 + Math.random() * 40;
+      g = 90 + Math.random() * 40;
+      b = 220 + Math.random() * 35;
+    } else if (roll < 0.75) {
+      // violet/purple
+      r = 130 + Math.random() * 30;
+      g = 80 + Math.random() * 30;
+      b = 230 + Math.random() * 25;
+    } else if (roll < 0.9) {
+      // amber
+      r = 230 + Math.random() * 25;
+      g = 160 + Math.random() * 40;
+      b = 20 + Math.random() * 30;
+    } else {
+      // white
+      r = g = b = 210 + Math.random() * 45;
+    }
+    return {
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      vx: (Math.random() - 0.5) * 0.5,
+      vy: (Math.random() - 0.5) * 0.5,
+      radius: 1.5 + Math.random() * 2,
+      color: 'rgba(' + Math.round(r) + ',' + Math.round(g) + ',' + Math.round(b) + ',',
+      baseAlpha: 0.5 + Math.random() * 0.4
+    };
+  }
+
+  function init() {
+    particles = [];
+    var count = getCount();
+    for (var i = 0; i < count; i++) {
+      particles.push(createParticle());
+    }
+  }
+  init();
+  window.addEventListener('resize', function() {
+    var target = getCount();
+    while (particles.length < target) particles.push(createParticle());
+    while (particles.length > target) particles.pop();
+  });
+
+  function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    var w = canvas.width, h = canvas.height;
+    var len = particles.length;
+
+    // Update positions
+    for (var i = 0; i < len; i++) {
+      var p = particles[i];
+      p.x += p.vx;
+      p.y += p.vy;
+
+      // Wrap around edges
+      if (p.x < -10) p.x = w + 10;
+      if (p.x > w + 10) p.x = -10;
+      if (p.y < -10) p.y = h + 10;
+      if (p.y > h + 10) p.y = -10;
+    }
+
+    // Draw connections between nearby particles
+    ctx.lineWidth = 0.8;
+    for (var i = 0; i < len; i++) {
+      var a = particles[i];
+      for (var j = i + 1; j < len; j++) {
+        var b = particles[j];
+        var dx = a.x - b.x;
+        var dy = a.y - b.y;
+        var dist = dx * dx + dy * dy;
+        if (dist < CONNECT_DIST * CONNECT_DIST) {
+          var alpha = (1 - Math.sqrt(dist) / CONNECT_DIST) * 0.3;
+          ctx.strokeStyle = 'rgba(99,102,241,' + alpha + ')';
+          ctx.beginPath();
+          ctx.moveTo(a.x, a.y);
+          ctx.lineTo(b.x, b.y);
+          ctx.stroke();
+        }
+      }
+
+      // Mouse connection — glow lines to nearby particles
+      var mdx = a.x - mouse.x;
+      var mdy = a.y - mouse.y;
+      var mDist = mdx * mdx + mdy * mdy;
+      if (mDist < MOUSE_DIST * MOUSE_DIST) {
+        var mAlpha = (1 - Math.sqrt(mDist) / MOUSE_DIST) * 0.6;
+        ctx.strokeStyle = 'rgba(139,92,246,' + mAlpha + ')';
+        ctx.lineWidth = 1.2;
+        ctx.beginPath();
+        ctx.moveTo(a.x, a.y);
+        ctx.lineTo(mouse.x, mouse.y);
+        ctx.stroke();
+        ctx.lineWidth = 0.8;
+      }
+    }
+
+    // Draw particles
+    for (var i = 0; i < len; i++) {
+      var p = particles[i];
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+      ctx.fillStyle = p.color + p.baseAlpha + ')';
+      ctx.fill();
+    }
+
+    requestAnimationFrame(animate);
+  }
+
+  // Start after a short delay so hero loads first
+  setTimeout(animate, 300);
+})();
+
+/*==============================================================
+  ANIMATION SYSTEM JS
+==============================================================*/
+
+/* 6. Scroll Reveal Observer */
+(function() {
+  var els = document.querySelectorAll('.reveal-up,.reveal-left,.reveal-right,.reveal-scale');
+  if (!els.length) return;
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('revealed');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  els.forEach(function(el) { observer.observe(el); });
+})();
+
+/* 8. Scroll Progress Bar */
+(function() {
+  var bar = document.getElementById('scroll-progress');
+  if (!bar) return;
+  window.addEventListener('scroll', function() {
+    var h = document.documentElement;
+    var pct = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100;
+    bar.style.width = pct + '%';
+  }, { passive: true });
+})();
+
+/* 5. 3D Tilt on Cards (mouse proximity) */
+(function() {
+  if (window.matchMedia('(hover: none)').matches) return;
+  document.querySelectorAll('.skill-card, .project-card, .stat-card').forEach(function(card) {
+    card.addEventListener('mousemove', function(e) {
+      var rect = card.getBoundingClientRect();
+      var x = e.clientX - rect.left;
+      var y = e.clientY - rect.top;
+      var cx = rect.width / 2;
+      var cy = rect.height / 2;
+      var rX = ((y - cy) / cy) * -6;
+      var rY = ((x - cx) / cx) * 6;
+      card.style.transform = 'perspective(800px) rotateX(' + rX + 'deg) rotateY(' + rY + 'deg) translateY(-8px)';
+    });
+    card.addEventListener('mouseleave', function() {
+      card.style.transform = '';
+      card.style.transition = 'transform 0.5s ease';
+      setTimeout(function() { card.style.transition = ''; }, 500);
+    });
+  });
+})();
+
+/* 8b. Smooth section fade on nav click */
+(function() {
+  document.querySelectorAll('.navmenu a[href^="#"]').forEach(function(link) {
+    link.addEventListener('click', function() {
+      var target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        target.style.opacity = '0';
+        target.style.transition = 'opacity 0.4s ease';
+        setTimeout(function() {
+          target.style.opacity = '1';
+        }, 100);
+      }
+    });
+  });
+})();
