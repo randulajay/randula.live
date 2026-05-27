@@ -326,28 +326,49 @@ document.getElementById('contact-form').addEventListener('submit', function(e) {
         btn.disabled = false;
     });
 
-  /* Animated counters */
+});
+
+/*==============================================================
+  ANIMATED COUNTERS — supports decimals + comma formatting
+==============================================================*/
+(function() {
+  function formatNumber(val, decimals, useComma) {
+    if (decimals > 0) {
+      var s = val.toFixed(decimals);
+      return useComma ? s.replace(/\B(?=(\d{3})+(?!\d))/g, ',') : s;
+    }
+    var n = Math.round(val);
+    return useComma ? n.toLocaleString('en-US') : '' + n;
+  }
+
   function runCounter(el) {
-    const target = +el.dataset.target;
-    const totalMs = 1800;
-    const tickMs = 30;
-    const steps = Math.round(totalMs / tickMs);
-    const increment = target / steps;
-    let current = 0;
-    let ticks = 0;
-    const timer = setInterval(() => {
-      ticks++;
-      current = Math.min(current + increment, target);
-      el.textContent = Math.round(current);
-      if (ticks >= steps) { el.textContent = target; clearInterval(timer); }
-    }, tickMs);
+    var target = parseFloat(el.dataset.target);
+    var decimals = parseInt(el.dataset.decimals) || 0;
+    var useComma = el.dataset.format === 'comma';
+    var duration = 2000;
+    var startTime = null;
+
+    function step(timestamp) {
+      if (!startTime) startTime = timestamp;
+      var progress = Math.min((timestamp - startTime) / duration, 1);
+      // Ease-out cubic for satisfying deceleration
+      var eased = 1 - Math.pow(1 - progress, 3);
+      var current = eased * target;
+      el.textContent = formatNumber(current, decimals, useComma);
+      if (progress < 1) {
+        requestAnimationFrame(step);
+      } else {
+        el.textContent = formatNumber(target, decimals, useComma);
+      }
+    }
+    requestAnimationFrame(step);
   }
 
   function checkCounters() {
-    document.querySelectorAll('.counter').forEach(el => {
-      if (el.dataset.started) return;            /* already running */
-      const rect = el.getBoundingClientRect();
-      if (rect.top < window.innerHeight * 0.95) {
+    document.querySelectorAll('.counter').forEach(function(el) {
+      if (el.dataset.started) return;
+      var rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight * 0.92) {
         el.dataset.started = '1';
         runCounter(el);
       }
@@ -355,11 +376,10 @@ document.getElementById('contact-form').addEventListener('submit', function(e) {
   }
 
   window.addEventListener('scroll', checkCounters, { passive: true });
-  /* Delayed fires so AOS has time to reveal the section */
-  window.addEventListener('load', () => {
-    [400, 900, 1600].forEach(ms => setTimeout(checkCounters, ms));
+  window.addEventListener('load', function() {
+    [300, 800, 1500].forEach(function(ms) { setTimeout(checkCounters, ms); });
   });
-});
+})();
 
 /*==============================================================
   FULL-PAGE PARTICLE NETWORK ANIMATION
